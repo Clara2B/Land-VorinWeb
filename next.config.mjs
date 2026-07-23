@@ -1,6 +1,4 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+export default nextConfig;

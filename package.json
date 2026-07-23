@@ -1,13 +1,30 @@
-export const siteConfig = {
-  name: "VorinWeb",
-  whatsappNumber: "5511939490204",
-  stats: ["15+ projetos entregues", "Resposta em até 1h", "Site no ar em 8 a 10 dias úteis"],
-};
-
-/**
- * Monta um link wa.me para o WhatsApp da VorinWeb com uma mensagem
- * pré-preenchida (o usuário só precisa apertar "enviar").
- */
-export function whatsappLink(message: string) {
-  return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`;
+{
+  "name": "vorinweb",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.35",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.35",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.2"
+  }
 }
