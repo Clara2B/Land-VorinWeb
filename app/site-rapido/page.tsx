@@ -119,45 +119,60 @@ export default function SiteRapidoPage() {
           </p>
         </Section>
 
-        <Section className="mt-6 grid grid-cols-1 gap-2 sm:mt-10 sm:grid-cols-3 sm:gap-4">
-          <PlanCard title="Modelo Pronto" price="R$499,90" description="Escolha um modelo pré-pronto e tenha seu site no ar em 2 dias.">
-            <FeatureList
-              items={["Domínio e hospedagem inclusos", "Publicado em até 2 dias", "Logo, cores e tipografia sua"]}
-            />
-            <p className="mb-1.5 text-[11px] font-semibold text-slate-300 sm:text-xs">Escolha o modelo:</p>
-            <ModelChips planLabel="Modelo Pronto" price="R$499,90" />
-          </PlanCard>
-
-          <PlanCard
-            title="Modelo Personalizável"
-            price="R$549,90"
-            description="4 modelos, alterações no que quiser e até 10 abas — o site que vende por você."
-            featured
-            badge="Mais escolhido"
-          >
-            <FeatureList
-              items={["Estrutura e conteúdo sob medida", "Até 10 abas", "Ideal pra quem quer vender mais"]}
-            />
-            <p className="mb-1.5 text-[11px] font-semibold text-slate-300 sm:text-xs">Escolha o modelo:</p>
-            <ModelChips planLabel="Modelo Personalizável" price="R$549,90" />
-          </PlanCard>
-
-          <PlanCard
-            title="Sob Medida"
-            description="Tem o produto, tem a qualidade, mas não tem um site à altura? Peça agora uma cotação personalizada."
-          >
-            <Link
-              href={whatsappLink(
-                "Olá! Vim pelo Instagram e quero uma cotação personalizada para o site do meu negócio.",
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={buttonVariants({ variant: "whatsapp", size: "default", className: "mt-3 w-full" })}
+        <Section className="mt-6 sm:mt-10">
+          <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-2 scrollbar-hide md:mx-0 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
+            <PlanCard
+              title="Modelo Pronto"
+              price="R$499,90"
+              description="Escolha um modelo pré-pronto e tenha seu site no ar em 2 dias."
+              className="order-2 w-[85vw] max-w-sm shrink-0 snap-center md:order-1 md:w-auto md:max-w-none md:shrink"
             >
-              <WhatsAppIcon className="h-5 w-5" />
-              Pedir cotação
-            </Link>
-          </PlanCard>
+              <FeatureList
+                items={["Domínio e hospedagem inclusos", "Publicado em até 2 dias", "Logo, cores e tipografia sua"]}
+              />
+              <p className="mb-1.5 text-[11px] font-semibold text-slate-300 sm:text-xs">Escolha o modelo:</p>
+              <ModelChips planLabel="Modelo Pronto" price="R$499,90" />
+            </PlanCard>
+
+            <PlanCard
+              title="Modelo Personalizável"
+              price="R$549,90"
+              description="4 modelos, alterações no que quiser e até 10 abas — o site que vende por você."
+              featured
+              badge="Mais escolhido"
+              className="order-1 w-[85vw] max-w-sm shrink-0 snap-center md:order-2 md:w-auto md:max-w-none md:shrink"
+            >
+              <FeatureList
+                items={["Estrutura e conteúdo sob medida", "Até 10 abas", "Ideal pra quem quer vender mais"]}
+              />
+              <p className="mb-1.5 text-[11px] font-semibold text-slate-300 sm:text-xs">Escolha o modelo:</p>
+              <ModelChips planLabel="Modelo Personalizável" price="R$549,90" />
+            </PlanCard>
+
+            <PlanCard
+              title="Sob Medida"
+              description="Tem o produto, tem a qualidade, mas não tem um site à altura? Peça agora uma cotação personalizada."
+              className="order-3 w-[85vw] max-w-sm shrink-0 snap-center md:w-auto md:max-w-none md:shrink"
+            >
+              <Link
+                href={whatsappLink(
+                  "Olá! Vim pelo Instagram e quero uma cotação personalizada para o site do meu negócio.",
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonVariants({ variant: "whatsapp", size: "default", className: "mt-3 w-full" })}
+              >
+                <WhatsAppIcon className="h-5 w-5" />
+                Pedir cotação
+              </Link>
+            </PlanCard>
+          </div>
+
+          <div className="mt-3 flex justify-center gap-1.5 md:hidden" aria-hidden="true">
+            <span className="h-1.5 w-1.5 rounded-full bg-slate-600" />
+            <span className="h-1.5 w-1.5 rounded-full bg-slate-600" />
+            <span className="h-1.5 w-1.5 rounded-full bg-slate-600" />
+          </div>
         </Section>
 
         <Section className="mt-4 flex flex-col items-center border-t border-slate-900 pt-3 text-center sm:mt-5 sm:pt-4">
