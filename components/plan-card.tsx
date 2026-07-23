@@ -18,8 +18,8 @@ const PlanCard = React.forwardRef<HTMLDivElement, PlanCardProps>(
         className={cn(
           "relative flex flex-col rounded-2xl border bg-slate-900 p-3.5 sm:p-4",
           featured
-            ? "border-brand shadow-lg shadow-brand/20 ring-1 ring-brand"
-            : "border-slate-800",
+            ? "card-glow-featured border-brand ring-1 ring-brand"
+            : "card-glow-side border-slate-800",
           className,
         )}
         {...props}

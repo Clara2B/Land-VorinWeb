@@ -175,22 +175,22 @@ export default function SiteRapidoPage() {
           </div>
         </Section>
 
-        <Section className="mt-4 flex flex-col items-center border-t border-slate-900 pt-3 text-center sm:mt-5 sm:pt-4">
+        <Section className="mt-2 flex flex-col items-center border-t border-slate-900 pt-2 text-center sm:mt-5 sm:pt-4">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-400 sm:text-sm">
             Empresas que a {siteConfig.name} já ajudou a escalar
           </p>
-          <div className="mt-2 flex flex-wrap items-start justify-center gap-3 sm:gap-6">
+          <div className="mt-2 grid grid-cols-2 items-start gap-2 sm:flex sm:flex-wrap sm:justify-center sm:gap-6">
             {cases.map((item) => (
-              <div key={item.name} className="flex w-40 flex-col items-center gap-1.5 sm:w-44">
-                <div className="flex h-12 w-full items-center justify-center rounded-lg border border-slate-800 bg-white/95 px-3 sm:h-14">
+              <div key={item.name} className="flex flex-col items-center gap-1 sm:w-44 sm:gap-1.5">
+                <div className="flex h-10 w-full items-center justify-center rounded-lg border border-slate-800 bg-white/95 px-3 sm:h-14">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={item.logo}
                     alt={item.name}
-                    className="max-h-8 w-auto object-contain sm:max-h-10"
+                    className="max-h-7 w-auto object-contain sm:max-h-10"
                   />
                 </div>
-                <p className="text-[9px] leading-snug text-slate-500 sm:text-[10px]">{item.result}</p>
+                <p className="text-[8px] leading-snug text-slate-500 sm:text-[10px]">{item.result}</p>
               </div>
             ))}
           </div>
