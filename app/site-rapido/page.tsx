@@ -119,7 +119,7 @@ export default function SiteRapidoPage() {
           </p>
         </Section>
 
-        <Section className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-4">
+        <Section className="mt-6 grid grid-cols-1 gap-2 sm:mt-10 sm:grid-cols-3 sm:gap-4">
           <PlanCard title="Modelo Pronto" price="R$499,90" description="Escolha um modelo pré-pronto e tenha seu site no ar em 2 dias.">
             <FeatureList
               items={["Domínio e hospedagem inclusos", "Publicado em até 2 dias", "Logo, cores e tipografia sua"]}
