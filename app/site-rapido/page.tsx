@@ -117,9 +117,6 @@ export default function SiteRapidoPage() {
             Escolha o plano ideal, selecione o modelo e fale agora com a{" "}
             {siteConfig.name} pelo WhatsApp.
           </p>
-          <p className="mt-1.5 text-[10px] font-medium text-slate-500 sm:text-xs">
-            {siteConfig.stats.join(" · ")}
-          </p>
         </Section>
 
         <Section className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-4">
