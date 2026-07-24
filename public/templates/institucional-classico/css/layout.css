@@ -41,8 +41,13 @@
 }
 
 .header:not(.header--solid) .header-logo,
-.header:not(.header--solid) .nav-link {
+.header:not(.header--solid) .nav-link,
+.header:not(.header--solid) .btn-secondary {
   color: var(--color-light);
+}
+
+.header:not(.header--solid) .btn-secondary {
+  border-color: hsl(0 0% 100% / 0.4);
 }
 
 .header-logo svg {
@@ -150,8 +155,13 @@
     width: 100%;
   }
 
-  .header:not(.header--solid) .nav .nav-link {
+  .header:not(.header--solid) .nav .nav-link,
+  .header:not(.header--solid) .nav .btn-secondary {
     color: var(--text-heading);
+  }
+
+  .header:not(.header--solid) .nav .btn-secondary {
+    border-color: var(--border-subtle);
   }
 
   .nav-link {
