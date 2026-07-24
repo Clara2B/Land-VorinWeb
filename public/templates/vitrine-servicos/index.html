@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<!--
+  VITRINE DE SERVIÇOS — VorinWeb
+  ==========================================================================
+  Modelo reutilizável para empresas com múltiplos serviços (clínicas,
+  escritórios, consultorias, prestadores de serviço em geral). HTML5 +
+  CSS3 + JS puro, sem frameworks e sem carrinho/checkout — a conversão
+  principal é o orçamento (formulário) ou o WhatsApp.
+
+  Para adaptar a um cliente real:
+    1. Empresa/identidade .. assets/js/services-data.js → objeto `company`
+                              e bloco "PERSONALIZAÇÃO RÁPIDA" em style.css
+    2. Categorias .......... services-data.js → array `categories`
+    3. Serviços ............ services-data.js → array `services`
+                              (depois: `node tools/gerar-paginas.js`)
+    4. Necessidades ........ services-data.js → array `needs`
+    5. Cases/depoimentos ... services-data.js → `cases` / `testimonials`
+    6. FAQ .................. services-data.js → array `faq`
+    7. WhatsApp ............ services-data.js → `company.whatsapp`
+    8. Domínio ............. buscar "www.seudominio.com.br"
+
+  Antes de publicar para um cliente real: atualizar todo o conteúdo
+  acima, trocar `robots` para "index, follow" e revisar o JSON-LD.
+  ==========================================================================
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Serviços Profissionais para Empresas | Nexora</title>
+  <meta name="description" content="Encontre serviços de consultoria, marketing, tecnologia, gestão e suporte. Explore as soluções e solicite um orçamento personalizado." />
+  <meta name="robots" content="noindex, nofollow" /> <!-- [SUBSTITUIR] trocar para "index, follow" ao publicar para um cliente -->
+  <link rel="canonical" href="https://www.seudominio.com.br/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nexora Serviços" />
+  <meta property="og:title" content="Serviços Profissionais para Empresas | Nexora" />
+  <meta property="og:description" content="Encontre serviços de consultoria, marketing, tecnologia, gestão e suporte. Explore as soluções e solicite um orçamento personalizado." />
+  <meta property="og:url" content="https://www.seudominio.com.br/" />
+  <meta property="og:image" content="https://www.seudominio.com.br/og-image.jpg" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Serviços Profissionais para Empresas | Nexora" />
+  <meta name="twitter:description" content="Encontre serviços de consultoria, marketing, tecnologia, gestão e suporte." />
+  <meta name="twitter:image" content="https://www.seudominio.com.br/og-image.jpg" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#0f7b6c" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- GOOGLE TAG MANAGER / GA4 — insira o snippet oficial aqui com o container ID real (GTM-XXXXXXX). Eventos já disparam em window.dataLayer via assets/js/main.js. -->
+  <!-- <script>(function(w,d,s,l,i){...})(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
+  <!-- META PIXEL (opcional) — insira aqui com o pixel ID real, de preferência só após consentimento de cookies. -->
+  <!-- <script>!function(f,b,e,v,n,t,s){...}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','SEU_PIXEL_ID');</script> -->
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Nexora Serviços",
+    "url": "https://www.seudominio.com.br/",
+    "logo": "https://www.seudominio.com.br/og-image.jpg",
+    "description": "Soluções profissionais para cada necessidade do seu negócio.",
+    "email": "contato@seudominio.com.br",
+    "sameAs": [
+      "https://instagram.com/seudominio",
+      "https://linkedin.com/company/seudominio",
+      "https://facebook.com/seudominio"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite + SearchAction (a busca interna do site) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Nexora Serviços",
+    "url": "https://www.seudominio.com.br/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.seudominio.com.br/?busca={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage (mantenha em sincronia com a seção #faq) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Como sei qual serviço escolher?", "acceptedAnswer": { "@type": "Answer", "text": "Você pode usar a busca, os filtros por categoria ou a seção \"Não sabe qual serviço escolher?\" — ou solicitar uma recomendação e nossa equipe ajuda a identificar o caminho mais adequado." } },
+      { "@type": "Question", "name": "Os serviços possuem preços fixos?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Cada projeto recebe uma proposta personalizada conforme o escopo definido." } },
+      { "@type": "Question", "name": "Existe contrato?", "acceptedAnswer": { "@type": "Answer", "text": "As condições contratuais variam por serviço e são detalhadas na proposta." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="scroll-progress" id="scrollProgress" role="presentation"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="siteHeader">
+    <div class="container">
+      <a href="#topo" class="header-logo">
+        <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-logo"></use></svg>
+        Nexora
+      </a>
+
+      <div class="nav-backdrop" id="navBackdrop"></div>
+      <nav class="nav" id="siteNav" aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#topo">Início</a></li>
+          <li class="mega-item" id="megaItem">
+            <button class="nav-link" id="megaTrigger" aria-expanded="false" aria-controls="megaPanel">
+              Serviços
+              <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-down"></use></svg>
+            </button>
+            <div class="mega-panel" id="megaPanel">
+              <div class="mega-grid" id="megaGrid"><!-- gerado por assets/js/main.js a partir de categories --></div>
+              <div class="mega-footer">
+                <a href="#vitrine" class="btn-ghost" style="font-size:var(--fs-xs);font-weight:700">Ver todos os serviços →</a>
+              </div>
+            </div>
+          </li>
+          <li><a class="nav-link" href="#categorias">Categorias</a></li>
+          <li><a class="nav-link" href="#como-funciona">Como funciona</a></li>
+          <li><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li><a class="nav-link" href="#faq">Dúvidas</a></li>
+          <li><a class="nav-link" href="#orcamento">Contato</a></li>
+        </ul>
+        <div class="header-actions">
+          <a href="/site-rapido#modelos" class="btn btn-secondary btn-sm">
+            <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-left"></use></svg>
+            Ver outros modelos
+          </a>
+          <a href="#orcamento" class="btn btn-primary btn-sm" data-track="click_cta_principal" data-track-label="header">Solicitar orçamento</a>
+        </div>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Abrir menu">
+        <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-menu"></use></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="topo" aria-label="Apresentação">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div data-reveal>
+          <span class="eyebrow">Nexora Serviços</span>
+          <h1>Encontre o serviço certo para o que sua empresa precisa agora</h1>
+          <p class="hero-subheadline">Explore nossas soluções, compare possibilidades e fale diretamente com um especialista para receber uma proposta personalizada.</p>
+
+          <div class="hero-actions">
+            <a href="#vitrine" class="btn btn-primary btn-lg" data-track="click_cta_principal" data-track-label="hero_primary">
+              Explorar serviços
+              <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg>
+            </a>
+            <a
+              href="https://wa.me/5500000000000"
+              class="btn btn-secondary btn-lg js-whatsapp-link"
+              data-wa-message="Olá! Preciso de ajuda para identificar qual serviço é mais adequado para minha necessidade."
+              data-wa-origem="HERO"
+              data-track="click_service_whatsapp"
+              data-track-label="hero_secondary"
+              target="_blank" rel="noopener noreferrer"
+            >
+              <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-whatsapp"></use></svg>
+              Solicitar recomendação
+            </a>
+          </div>
+
+          <div class="hero-indicators">
+            <div class="hero-indicator-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check-circle"></use></svg>Atendimento personalizado</div>
+            <div class="hero-indicator-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check-circle"></use></svg>Orçamento sem compromisso</div>
+            <div class="hero-indicator-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check-circle"></use></svg>Soluções para diferentes necessidades</div>
+            <div class="hero-indicator-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check-circle"></use></svg>Suporte especializado</div>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-reveal style="--reveal-delay:120ms" aria-hidden="true">
+          <div class="hero-visual-grid">
+            <div class="hero-visual-card"><svg><use href="assets/icons/sprite.svg#icon-target"></use></svg><div><strong>Estratégia</strong><span>e consultoria</span></div></div>
+            <div class="hero-visual-card"><svg><use href="assets/icons/sprite.svg#icon-monitor"></use></svg><div><strong>Tecnologia</strong><span>e automação</span></div></div>
+          </div>
+          <div class="hero-visual-card hero-visual-card--wide">
+            <svg><use href="assets/icons/sprite.svg#icon-layers"></use></svg>
+            <div><strong>12 serviços organizados em 6 categorias</strong><span>Filtre, compare e escolha com clareza</span></div>
+          </div>
+          <div class="hero-visual-grid">
+            <div class="hero-visual-card"><svg><use href="assets/icons/sprite.svg#icon-headset"></use></svg><div><strong>Suporte</strong><span>operacional</span></div></div>
+            <div class="hero-visual-card"><svg><use href="assets/icons/sprite.svg#icon-puzzle"></use></svg><div><strong>Projetos</strong><span>sob medida</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INDICADORES DE CONFIANÇA ===== -->
+    <!-- [SUBSTITUIR] estes indicadores são qualitativos, de propósito — não
+         inventamos número de clientes, anos de experiência, satisfação,
+         projetos concluídos ou economia gerada. Se a empresa tiver esses
+         dados reais, é aqui que entram. -->
+    <section class="trust-strip" aria-label="Indicadores de confiança">
+      <div class="container trust-grid" data-reveal>
+        <div class="trust-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-users"></use></svg><span>Atendimento consultivo</span></div>
+        <div class="trust-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-award"></use></svg><span>Equipe especializada</span></div>
+        <div class="trust-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-puzzle"></use></svg><span>Soluções personalizadas</span></div>
+        <div class="trust-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-shield-check"></use></svg><span>Processo transparente</span></div>
+      </div>
+    </section>
+
+    <!-- ===== CATEGORIAS ===== -->
+    <section class="section" id="categorias" aria-labelledby="categorias-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Categorias</span>
+          <h2 id="categorias-title">Soluções organizadas para você encontrar o que precisa</h2>
+          <p>Escolha uma categoria para filtrar a vitrine, ou explore todos os serviços de uma vez.</p>
+        </div>
+        <div class="categories-grid" id="categoriesGrid" data-reveal><!-- gerado por assets/js/main.js --></div>
+      </div>
+    </section>
+
+    <!-- ===== VITRINE PRINCIPAL (busca + filtros + grid) ===== -->
+    <section class="section section--alt" id="vitrine" aria-labelledby="vitrine-title">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="eyebrow">Vitrine de serviços</span>
+          <h2 id="vitrine-title">Todos os serviços em um só lugar</h2>
+          <p>Use a busca ou os filtros abaixo para encontrar rapidamente o que você precisa.</p>
+        </div>
+
+        <div class="showcase-toolbar" data-reveal>
+          <div class="search-bar" id="searchBar">
+            <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-search"></use></svg>
+            <input type="search" id="serviceSearch" placeholder="Qual serviço você está procurando?" aria-label="Buscar serviço" />
+            <button class="search-clear" id="searchClear" type="button" aria-label="Limpar busca">
+              <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-close"></use></svg>
+            </button>
+          </div>
+
+          <div class="filters-row">
+            <div class="filter-chips" id="categoryChips" role="group" aria-label="Filtrar por categoria"><!-- gerado por JS --></div>
+          </div>
+          <div class="filters-row">
+            <select class="filter-select" id="filterMode" aria-label="Filtrar por modalidade de atendimento">
+              <option value="">Modalidade: todas</option>
+            </select>
+            <select class="filter-select" id="filterFeatured" aria-label="Filtrar por destaque">
+              <option value="">Todos os serviços</option>
+              <option value="true">Somente em destaque</option>
+            </select>
+            <button class="filters-clear" id="filtersClear" type="button">
+              <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-close"></use></svg>
+              Limpar filtros
+            </button>
+          </div>
+
+          <p class="results-count" id="resultsCount" aria-live="polite"></p>
+        </div>
+
+        <div class="services-grid" id="servicesGrid" data-reveal aria-live="polite"><!-- gerado por assets/js/main.js --></div>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-search"></use></svg>
+          <h3>Não encontramos um serviço com esses filtros.</h3>
+          <p>Tente ajustar a busca ou os filtros — ou fale diretamente com a gente.</p>
+          <a href="https://wa.me/5500000000000" class="btn btn-primary js-whatsapp-link" data-wa-message="Olá! Não encontrei exatamente o que procurava na vitrine e gostaria de falar com um especialista." data-wa-origem="BUSCA_VAZIA" target="_blank" rel="noopener noreferrer">Falar com um especialista</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DESTAQUES ===== -->
+    <section class="section" id="destaques" aria-labelledby="destaques-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Destaques</span>
+          <h2 id="destaques-title">Serviços mais procurados</h2>
+          <p>Uma seleção dos serviços com maior procura pelos nossos clientes.</p>
+        </div>
+        <div class="services-grid" id="featuredGrid" data-reveal><!-- gerado por assets/js/main.js a partir de featured:true --></div>
+      </div>
+    </section>
+
+    <!-- ===== COMO FUNCIONA ===== -->
+    <section class="section section--alt" id="como-funciona" aria-labelledby="processo-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Como funciona</span>
+          <h2 id="processo-title">Do primeiro contato ao início do projeto</h2>
+        </div>
+        <div class="process-grid" data-reveal>
+          <div class="process-step"><span class="process-number">1</span><h3>Explore os serviços</h3><p>Use a busca, os filtros ou as categorias para conhecer as soluções disponíveis.</p></div>
+          <div class="process-step"><span class="process-number">2</span><h3>Escolha ou peça recomendação</h3><p>Selecione um serviço ou solicite ajuda para identificar o mais adequado.</p></div>
+          <div class="process-step"><span class="process-number">3</span><h3>Conte o que precisa</h3><p>Preencha o formulário ou fale pelo WhatsApp com os detalhes da sua necessidade.</p></div>
+          <div class="process-step"><span class="process-number">4</span><h3>Receba uma proposta</h3><p>Uma proposta personalizada é preparada conforme o escopo definido.</p></div>
+          <div class="process-step"><span class="process-number">5</span><h3>Inicie o projeto</h3><p>O projeto começa com acompanhamento em cada etapa.</p></div>
+        </div>
+        <div class="process-note" data-reveal>
+          <p>Caso você ainda não saiba qual serviço escolher, nossa equipe analisa sua necessidade e recomenda o caminho mais adequado.</p>
+          <a href="https://wa.me/5500000000000" class="btn btn-primary js-whatsapp-link" data-wa-message="Olá! Ainda não sei qual serviço escolher e gostaria de uma recomendação." data-wa-origem="COMO_FUNCIONA" data-track="click_recommendation_cta" target="_blank" rel="noopener noreferrer">Quero uma recomendação</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIFERENCIAIS ===== -->
+    <section class="section" id="diferenciais" aria-labelledby="diferenciais-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Diferenciais</span>
+          <h2 id="diferenciais-title">Por que trabalhar com a Nexora</h2>
+        </div>
+        <div class="differentials-grid" data-reveal>
+          <div class="differential-card"><div class="differential-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-headset"></use></svg></div><h3>Atendimento consultivo</h3><p>Entendemos a necessidade antes de indicar qualquer serviço.</p></div>
+          <div class="differential-card"><div class="differential-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-target"></use></svg></div><h3>Escopo definido com clareza</h3><p>Cada proposta detalha exatamente o que está incluído.</p></div>
+          <div class="differential-card"><div class="differential-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-puzzle"></use></svg></div><h3>Soluções adaptadas</h3><p>Os serviços se ajustam à realidade de cada empresa.</p></div>
+          <div class="differential-card"><div class="differential-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-mail"></use></svg></div><h3>Comunicação direta</h3><p>Um ponto de contato claro ao longo de todo o projeto.</p></div>
+          <div class="differential-card"><div class="differential-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-layers"></use></svg></div><h3>Processo organizado</h3><p>Etapas bem definidas, do diagnóstico à entrega.</p></div>
+          <div class="differential-card"><div class="differential-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check-circle"></use></svg></div><h3>Acompanhamento em cada etapa</h3><p>Você sabe em que ponto o projeto está a qualquer momento.</p></div>
+          <div class="differential-card"><div class="differential-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-shield-check"></use></svg></div><h3>Propostas transparentes</h3><p>Sem letras miúdas — o escopo é apresentado antes da contratação.</p></div>
+          <div class="differential-card"><div class="differential-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-trending-up"></use></svg></div><h3>Possibilidade de expansão</h3><p>Novos serviços podem ser incluídos conforme a empresa evolui.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOLUÇÕES POR NECESSIDADE ===== -->
+    <section class="section section--alt" id="necessidades" aria-labelledby="necessidades-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Não sabe qual serviço escolher?</span>
+          <h2 id="necessidades-title">Conte o que você precisa, nós indicamos o caminho</h2>
+        </div>
+        <div class="need-grid" id="needsGrid" data-reveal><!-- gerado por assets/js/main.js --></div>
+      </div>
+    </section>
+
+    <!-- ===== COMPARAÇÃO ===== -->
+    <section class="section" id="comparacao" aria-labelledby="comparacao-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Comparação</span>
+          <h2 id="comparacao-title">Compare até 3 serviços lado a lado</h2>
+          <p>Marque o ícone de comparação em qualquer card da vitrine acima, ou veja um exemplo pronto abaixo.</p>
+        </div>
+        <div style="text-align:center" data-reveal>
+          <button class="btn btn-secondary btn-lg" id="quickCompareBtn" type="button">
+            <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-scale"></use></svg>
+            Ver comparação de exemplo
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOBRE ===== -->
+    <section class="section section--alt" id="sobre" aria-labelledby="sobre-title">
+      <div class="container split">
+        <div class="about-visual" data-reveal aria-hidden="true">
+          <svg><use href="assets/icons/sprite.svg#icon-layers"></use></svg>
+        </div>
+        <div data-reveal style="--reveal-delay:100ms">
+          <span class="eyebrow">Sobre a empresa</span>
+          <h2 id="sobre-title">Mais do que uma lista de serviços</h2>
+          <p style="margin-top:var(--space-4)">A Nexora reúne diferentes soluções em uma única estrutura para facilitar a contratação, o acompanhamento e a evolução dos projetos. Cada necessidade é analisada antes da definição do serviço e do escopo.</p>
+
+          <div class="about-meta">
+            <div class="about-meta-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-target"></use></svg><div><strong>Missão</strong><span>Facilitar o acesso a serviços profissionais organizados e claros.</span></div></div>
+            <div class="about-meta-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-layers"></use></svg><div><strong>Forma de trabalho</strong><span>Cada projeto começa por entender a necessidade real da empresa.</span></div></div>
+            <div class="about-meta-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-headset"></use></svg><div><strong>Atendimento</strong><span>Consultivo, direto e acompanhado do início ao fim.</span></div></div>
+            <div class="about-meta-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-map-pin"></use></svg><div><strong>Área de atuação</strong><span>Atendimento remoto — Brasil todo.</span></div></div>
+          </div>
+
+          <a href="#orcamento" class="btn btn-secondary" style="margin-top:var(--space-8)">Conhecer a empresa</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJETOS / RESULTADOS ===== -->
+    <!-- [Template] Os cases abaixo são demonstrativos (ver "(demonstração)"
+         no nome do segmento) e usam resultados qualitativos, nunca
+         métricas inventadas. Substitua por projetos reais e autorizados
+         antes de publicar comercialmente. -->
+    <section class="section" id="projetos" aria-labelledby="projetos-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Projetos</span>
+          <h2 id="projetos-title">Resultados aplicados a diferentes segmentos</h2>
+          <p>Exemplos de como os serviços se combinam na prática.</p>
+        </div>
+        <div class="cases-grid" id="casesGrid" data-reveal><!-- gerado por assets/js/main.js --></div>
+      </div>
+    </section>
+
+    <!-- ===== DEPOIMENTOS ===== -->
+    <section class="section section--alt" id="depoimentos" aria-labelledby="depoimentos-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Depoimentos</span>
+          <h2 id="depoimentos-title">O que dizem sobre a experiência de trabalhar com a gente</h2>
+          <p>Os cards abaixo são exemplos ilustrativos do componente — serão substituídos por depoimentos reais e autorizados.</p>
+        </div>
+        <div class="testimonials-grid" id="testimonialsGrid" data-reveal><!-- gerado por assets/js/main.js --></div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Dúvidas frequentes</span>
+          <h2 id="faq-title">Perguntas frequentes</h2>
+        </div>
+        <div class="accordion" id="faqAccordion" data-reveal><!-- gerado por assets/js/main.js --></div>
+      </div>
+    </section>
+
+    <!-- ===== FORMULÁRIO DE ORÇAMENTO ===== -->
+    <section class="section section--alt" id="orcamento" aria-labelledby="orcamento-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Orçamento</span>
+          <h2 id="orcamento-title">Conte o que você precisa</h2>
+          <p>Preencha as informações abaixo para receber uma recomendação e uma proposta adequada ao seu projeto.</p>
+        </div>
+
+        <div style="max-width:720px;margin-inline:auto" data-reveal>
+          <div class="form-card">
+            <form id="quoteForm" novalidate>
+              <div class="form-honeypot" aria-hidden="true">
+                <label for="field-website">Não preencha este campo</label>
+                <input type="text" id="field-website" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="form-row">
+                <div class="form-field" data-field="name">
+                  <label for="field-name">Nome</label>
+                  <input type="text" id="field-name" name="name" autocomplete="name" required minlength="3" aria-describedby="error-name" />
+                  <span class="form-error" id="error-name" role="alert">Informe seu nome.</span>
+                </div>
+                <div class="form-field" data-field="company">
+                  <label for="field-company">Empresa <span class="optional">(opcional)</span></label>
+                  <input type="text" id="field-company" name="company" autocomplete="organization" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field" data-field="whatsapp">
+                  <label for="field-whatsapp">WhatsApp</label>
+                  <input type="tel" id="field-whatsapp" name="whatsapp" inputmode="numeric" placeholder="(00) 00000-0000" autocomplete="tel" aria-describedby="error-whatsapp" />
+                  <span class="form-error" id="error-whatsapp" role="alert">Informe um WhatsApp ou um e-mail válido.</span>
+                </div>
+                <div class="form-field" data-field="email">
+                  <label for="field-email">E-mail</label>
+                  <input type="email" id="field-email" name="email" autocomplete="email" aria-describedby="error-email" />
+                  <span class="form-error" id="error-email" role="alert">Informe um e-mail válido.</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field" data-field="category">
+                  <label for="field-category">Categoria</label>
+                  <select id="field-category" name="category">
+                    <option value="">Selecione uma opção</option>
+                  </select>
+                </div>
+                <div class="form-field" data-field="service">
+                  <label for="field-service">Serviço de interesse <span class="optional">(opcional)</span></label>
+                  <select id="field-service" name="service">
+                    <option value="">Selecione uma opção</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field" data-field="goal">
+                <label for="field-goal">Objetivo principal</label>
+                <select id="field-goal" name="goal" required aria-describedby="error-goal">
+                  <option value="">Selecione uma opção</option>
+                </select>
+                <span class="form-error" id="error-goal" role="alert">Selecione o objetivo principal.</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field" data-field="mode">
+                  <label for="field-mode">Modalidade desejada</label>
+                  <select id="field-mode" name="mode">
+                    <option value="">Sem preferência</option>
+                  </select>
+                </div>
+                <div class="form-field" data-field="timeline">
+                  <label for="field-timeline">Prazo</label>
+                  <select id="field-timeline" name="timeline">
+                    <option value="">Selecione uma opção</option>
+                    <option value="urgente">O quanto antes</option>
+                    <option value="1-mes">Até 1 mês</option>
+                    <option value="1-3-meses">1 a 3 meses</option>
+                    <option value="sem-pressa">Sem pressa</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field" data-field="investment">
+                <label for="field-investment">Faixa de investimento</label>
+                <select id="field-investment" name="investment">
+                  <option value="">Selecione uma opção</option>
+                </select>
+              </div>
+
+              <div class="form-field" data-field="message">
+                <label for="field-message">Mensagem</label>
+                <textarea id="field-message" name="message" required minlength="10" aria-describedby="error-message"></textarea>
+                <span class="form-error" id="error-message" role="alert">Conte um pouco sobre o que você precisa (mín. 10 caracteres).</span>
+              </div>
+
+              <div class="form-consent" data-field="consent">
+                <input type="checkbox" id="field-consent" name="consent" required aria-describedby="error-consent" />
+                <div>
+                  <label for="field-consent">Concordo com o uso dos meus dados para contato, conforme a <a href="#">Política de Privacidade</a>, de acordo com a LGPD.</label>
+                  <span class="form-error" id="error-consent" role="alert">É necessário aceitar o uso dos dados para enviar o formulário.</span>
+                </div>
+              </div>
+
+              <div class="alert alert-error" id="formGenericError" role="alert" hidden style="margin-bottom:var(--space-5)">
+                <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-alert-circle"></use></svg>
+                <span>Não foi possível enviar agora. Tente novamente ou fale pelo WhatsApp.</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-lg">
+                <span class="btn-spinner" aria-hidden="true"></span>
+                <span class="btn-label">Solicitar análise</span>
+              </button>
+              <p class="form-hint" style="text-align:center;margin-top:var(--space-3)">Campos obrigatórios: nome, WhatsApp ou e-mail, objetivo e mensagem.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section class="section section--ink" aria-label="Chamada final">
+      <div class="container">
+        <div class="cta-final" data-reveal>
+          <h2>Não encontrou exatamente o que procura?</h2>
+          <p>Conte sua necessidade e receba uma recomendação personalizada antes de contratar.</p>
+          <div class="hero-actions">
+            <a href="#orcamento" class="btn btn-primary btn-lg" data-track="click_final_cta">Solicitar recomendação</a>
+            <a href="https://wa.me/5500000000000" class="btn btn-secondary btn-lg js-whatsapp-link" data-wa-message="Olá! Gostaria de conversar sobre uma solução para minha empresa." data-wa-origem="CTA_FINAL" target="_blank" rel="noopener noreferrer">
+              <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-whatsapp"></use></svg>
+              Falar pelo WhatsApp
+            </a>
+          </div>
+          <p class="cta-final-note">Sem compromisso. A proposta é apresentada somente depois de entendermos sua necessidade.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#topo" class="header-logo" style="color:#fff"><svg aria-hidden="true" style="color:var(--color-primary-light)"><use href="assets/icons/sprite.svg#icon-logo"></use></svg>Nexora</a>
+          <p>Soluções profissionais para cada necessidade do seu negócio.</p>
+          <div class="social-links">
+            <a href="https://instagram.com/seudominio" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-instagram"></use></svg></a>
+            <a href="https://linkedin.com/company/seudominio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-linkedin"></use></svg></a>
+            <a href="https://facebook.com/seudominio" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-facebook"></use></svg></a>
+          </div>
+        </div>
+
+        <nav aria-label="Categorias">
+          <p class="footer-heading">Categorias</p>
+          <ul class="footer-links" id="footerCategories"><!-- gerado por assets/js/main.js --></ul>
+        </nav>
+
+        <nav aria-label="Serviços em destaque">
+          <p class="footer-heading">Em destaque</p>
+          <ul class="footer-links" id="footerFeatured"><!-- gerado por assets/js/main.js --></ul>
+        </nav>
+
+        <div>
+          <p class="footer-heading">Contato</p>
+          <ul class="footer-contact">
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-phone"></use></svg>(00) 0000-0000</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-mail"></use></svg>contato@seudominio.com.br</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-map-pin"></use></svg>Atendimento remoto — Brasil todo</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> Nexora Serviços. Todos os direitos reservados. CNPJ 00.000.000/0001-00 (fictício).</p>
+        <div class="footer-legal"><a href="#">Política de privacidade</a><a href="#">Termos de uso</a><a href="#">Acessibilidade</a></div>
+      </div>
+      <p class="footer-credit">Desenvolvido pela <a href="https://vorinweb.com.br/" target="_blank" rel="noopener noreferrer">VorinWeb</a></p>
+    </div>
+  </footer>
+
+  <!-- ===== EXTRAS FLUTUANTES ===== -->
+  <a class="float-whatsapp js-whatsapp-link" href="https://wa.me/5500000000000" data-wa-message="Olá! Gostaria de falar sobre os serviços da Nexora." data-wa-origem="BOTAO_FLUTUANTE" data-track="click_service_whatsapp" data-track-label="floating_button" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+    <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-whatsapp"></use></svg>
+  </a>
+
+  <div class="mobile-help-bar" id="mobileHelpBar" data-visible="false">
+    <span>Precisa de ajuda para escolher?</span>
+    <a href="https://wa.me/5500000000000" class="btn btn-primary btn-sm js-whatsapp-link" data-wa-message="Olá! Preciso de ajuda para escolher o serviço mais indicado." data-wa-origem="BARRA_MOBILE" data-track="click_recommendation_cta" target="_blank" rel="noopener noreferrer">Pedir recomendação</a>
+  </div>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" data-visible="false">
+    <p>Usamos cookies para melhorar sua experiência de navegação, conforme a nossa <a href="#">Política de Privacidade</a> e a LGPD.</p>
+    <div class="cookie-actions">
+      <button class="btn btn-primary btn-sm" id="cookieAccept">Aceitar</button>
+      <button class="btn btn-secondary btn-sm" id="cookieDecline">Recusar</button>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: COMPARAÇÃO ===== -->
+  <div class="modal-overlay" id="compareModal" data-open="false" role="dialog" aria-modal="true" aria-labelledby="compareModalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="compareModalTitle">Comparação de serviços</h3>
+        <button class="modal-close" data-modal-close aria-label="Fechar comparação"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-close"></use></svg></button>
+      </div>
+      <div class="modal-body">
+        <div style="overflow-x:auto">
+          <table class="compare-table" id="compareTable"><!-- gerado por assets/js/main.js --></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL: CASE ===== -->
+  <div class="modal-overlay" id="caseModal" data-open="false" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="caseModalTitle">Projeto</h3>
+        <button class="modal-close" data-modal-close aria-label="Fechar projeto"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-close"></use></svg></button>
+      </div>
+      <div class="modal-body case-modal-body" id="caseModalBody"><!-- gerado por assets/js/main.js --></div>
+    </div>
+  </div>
+
+  <script src="assets/js/services-data.js"></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

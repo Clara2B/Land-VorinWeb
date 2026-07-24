@@ -45,5 +45,7 @@ export const siteModels: SiteModel[] = [
     name: "Vitrine de Serviços",
     category: "Página de serviços",
     blurb: "Apresenta os serviços oferecidos com clareza, facilitando pedidos de orçamento.",
+    previewImage: "/images/models/vitrine-servicos.jpg",
+    demoUrl: "/templates/vitrine-servicos/index.html",
   },
 ];

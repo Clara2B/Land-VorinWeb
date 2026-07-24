@@ -1,0 +1,14 @@
+{
+  "name": "Nexora Serviços — Vitrine de Serviços Profissionais",
+  "short_name": "Nexora",
+  "description": "Encontre serviços de consultoria, marketing, tecnologia, gestão e suporte, e solicite um orçamento personalizado.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f7b6c",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
