@@ -15,6 +15,12 @@ body {
   color-scheme: light;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 @layer utilities {
   .scrollbar-hide {
     scrollbar-width: none;
