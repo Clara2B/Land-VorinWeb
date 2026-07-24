@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<!--
+  PORTFÓLIO PROFISSIONAL PREMIUM — VorinWeb
+  ==========================================================================
+  Modelo reutilizável para qualquer profissional ou estúdio criativo
+  (HTML5 + CSS3 + JS puro, sem frameworks). Para adaptar:
+
+    1. Cores/fontes ........ assets/css/style.css, bloco "PERSONALIZAÇÃO
+                              RÁPIDA" no topo do arquivo.
+    2. Nome/logo ........... buscar "Estúdio Vero"
+    3. Projetos ............. seção #projetos — duplique um <article
+                              class="project-card"> pra cada projeto novo.
+    4. Novo case detalhado .. duplique projeto.html, edite o conteúdo,
+                              e aponte o link "Ver case" do card pra ele.
+    5. Contato/endereço .... rodapé + seção de contato + JSON-LD no <head>
+    6. Domínio .............. buscar "www.seudominio.com.br"
+    7. WhatsApp ............. buscar "5500000000000"
+
+  Antes de publicar para um cliente real: atualizar todo o conteúdo
+  acima, trocar `robots` para "index, follow" e revisar o JSON-LD.
+  ==========================================================================
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!--
+    Tema claro/escuro: decidido AQUI, de forma síncrona, antes de
+    qualquer CSS pintar a tela — isso evita o "flash" da cor errada ao
+    carregar a página. Sem preferência salva, o CSS já resolve sozinho
+    via prefers-color-scheme (ver style.css); este script só entra em
+    ação quando existe uma escolha manual salva no localStorage.
+  -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme-preference");
+        if (saved === "dark" || saved === "light") {
+          document.documentElement.setAttribute("data-theme", saved);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <title>Estúdio Vero | Portfólio de Projetos Digitais</title>
+  <meta name="description" content="Design, estratégia e tecnologia trabalhando juntos. Conheça os projetos, serviços e resultados do Estúdio Vero." />
+  <meta name="robots" content="noindex, nofollow" /> <!-- [SUBSTITUIR] trocar para "index, follow" ao publicar para um cliente -->
+  <link rel="canonical" href="https://www.seudominio.com.br/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Estúdio Vero" />
+  <meta property="og:title" content="Estúdio Vero | Portfólio de Projetos Digitais" />
+  <meta property="og:description" content="Design, estratégia e tecnologia trabalhando juntos. Conheça os projetos, serviços e resultados do Estúdio Vero." />
+  <meta property="og:url" content="https://www.seudominio.com.br/" />
+  <meta property="og:image" content="https://www.seudominio.com.br/og-image.jpg" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Estúdio Vero | Portfólio de Projetos Digitais" />
+  <meta name="twitter:description" content="Design, estratégia e tecnologia trabalhando juntos." />
+  <meta name="twitter:image" content="https://www.seudominio.com.br/og-image.jpg" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#5b21ff" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- GOOGLE TAG MANAGER / GA4 — insira o snippet oficial aqui com o container ID real (GTM-XXXXXXX). Eventos já disparam em window.dataLayer via assets/js/script.js. -->
+  <!-- <script>(function(w,d,s,l,i){...})(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
+  <!-- META PIXEL (opcional) — insira aqui com o pixel ID real, de preferência só após consentimento de cookies. -->
+  <!-- <script>!function(f,b,e,v,n,t,s){...}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','SEU_PIXEL_ID');</script> -->
+
+  <!-- JSON-LD: Person (troque para Organization se representar uma empresa/agência) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Estúdio Vero",
+    "url": "https://www.seudominio.com.br/",
+    "image": "https://www.seudominio.com.br/og-image.jpg",
+    "jobTitle": "Design, estratégia e tecnologia",
+    "sameAs": [
+      "https://www.instagram.com/seudominio",
+      "https://www.linkedin.com/in/seudominio",
+      "https://www.behance.net/seudominio",
+      "https://dribbble.com/seudominio"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: ProfessionalService (dados fictícios — [SUBSTITUIR] antes de publicar) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Estúdio Vero",
+    "image": "https://www.seudominio.com.br/og-image.jpg",
+    "telephone": "+55-00-0000-0000",
+    "email": "ola@seudominio.com.br",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Exemplo, 500",
+      "addressLocality": "Sua Cidade",
+      "addressRegion": "UF",
+      "postalCode": "00000-000",
+      "addressCountry": "BR"
+    },
+    "areaServed": "BR",
+    "priceRange": "$$"
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage (mantenha em sincronia com a seção #faq) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Quanto custa um projeto?", "acceptedAnswer": { "@type": "Answer", "text": "Depende do escopo. Após entender sua necessidade, enviamos uma proposta detalhada e sem surpresas." } },
+      { "@type": "Question", "name": "Qual o prazo de entrega?", "acceptedAnswer": { "@type": "Answer", "text": "Varia conforme o projeto. Em média, entre 3 e 8 semanas, com cronograma definido no planejamento." } },
+      { "@type": "Question", "name": "O site será responsivo?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, todos os projetos são desenvolvidos para funcionar bem em qualquer tamanho de tela." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="scroll-progress" id="scrollProgress" role="presentation"></div>
+
+  <!-- ===== TELA DE ENTRADA (opcional — remova a div inteira para tirar) ===== -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <span class="intro-logo">Estúdio Vero</span>
+    <span class="intro-tagline">Design, estratégia e tecnologia trabalhando juntos.</span>
+    <div class="intro-bar"><div class="intro-bar-fill"></div></div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="siteHeader">
+    <div class="container">
+      <a href="#topo" class="header-logo">
+        <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-logo"></use></svg>
+        Estúdio Vero
+      </a>
+
+      <div class="nav-backdrop" id="navBackdrop"></div>
+      <nav class="nav" id="siteNav" aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li><a class="nav-link" href="#projetos">Projetos</a></li>
+          <li><a class="nav-link" href="#servicos">Serviços</a></li>
+          <li><a class="nav-link" href="#processo">Processo</a></li>
+          <li><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
+          <li><a class="nav-link" href="#contato">Contato</a></li>
+        </ul>
+        <div class="header-actions">
+          <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Alternar tema claro/escuro">
+            <svg class="icon-moon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-moon"></use></svg>
+            <svg class="icon-sun" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-sun"></use></svg>
+          </button>
+          <a href="#contato" class="btn btn-primary btn-sm" data-track="click_cta_principal" data-track-label="header">Solicitar orçamento</a>
+        </div>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:var(--space-2)">
+        <button class="theme-toggle" id="themeToggleMobile" type="button" aria-pressed="false" aria-label="Alternar tema claro/escuro" onclick="document.getElementById('themeToggle').click()">
+          <svg class="icon-moon" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-moon"></use></svg>
+          <svg class="icon-sun" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-sun"></use></svg>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Abrir menu">
+          <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-menu"></use></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="topo" aria-label="Apresentação">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div data-reveal>
+          <span class="eyebrow">Design &amp; Desenvolvimento</span>
+          <h1>Criamos experiências digitais que transformam ideias em resultados.</h1>
+          <p class="hero-subheadline">Design, estratégia e tecnologia trabalhando juntos.</p>
+          <p class="hero-text">Ajudamos profissionais e empresas a se apresentarem online com projetos que unem estética, performance e propósito comercial.</p>
+
+          <div class="hero-actions">
+            <a href="#projetos" class="btn btn-primary btn-lg" data-track="click_cta_principal" data-track-label="hero_primary">
+              Ver projetos
+              <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg>
+            </a>
+            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg" data-track="click_whatsapp" data-track-label="hero_secondary">
+              <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-whatsapp"></use></svg>
+              Falar no WhatsApp
+            </a>
+          </div>
+
+          <div class="hero-trust">
+            <div class="hero-trust-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-briefcase"></use></svg><strong>+50</strong>&nbsp;projetos entregues</div>
+            <div class="hero-trust-item">
+              <span class="stars" aria-hidden="true"><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg></span>
+              <strong>4.9</strong>&nbsp;de avaliação
+            </div>
+            <div class="hero-trust-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-award"></use></svg><strong>5</strong>&nbsp;anos de experiência</div>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-reveal style="--reveal-delay:120ms" aria-hidden="true">
+          <div class="hero-visual-card hero-visual-card--main">
+            <div class="project-media" style="--proj-a:#5b21ff;--proj-b:#3f13c9">
+              <svg class="project-glyph" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-layers"></use></svg>
+            </div>
+          </div>
+          <div class="hero-visual-card hero-visual-card--stat">
+            <svg><use href="assets/icons/sprite.svg#icon-trending-up"></use></svg>
+            <div><strong style="display:block;font-family:var(--font-heading);font-size:var(--fs-lg)">+38%</strong><span style="color:var(--text-muted);font-size:var(--fs-xs)">resultado médio</span></div>
+          </div>
+          <div class="hero-visual-card hero-visual-card--badge">
+            <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check-circle"></use></svg>
+            Projeto entregue
+          </div>
+        </div>
+      </div>
+
+      <a href="#especialidades" class="scroll-hint" aria-label="Rolar para ver mais">
+        Rolar
+        <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-arrow-down"></use></svg>
+      </a>
+    </section>
+
+    <!-- ===== FAIXA DE ESPECIALIDADES ===== -->
+    <section class="specialty-strip" id="especialidades" aria-label="Especialidades">
+      <div class="marquee-wrap">
+        <ul class="marquee-track" aria-hidden="true">
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-monitor"></use></svg>Web Design</li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-code"></use></svg>Desenvolvimento<span class="dot"></span></li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-palette"></use></svg>Branding</li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-zap"></use></svg>Landing Pages<span class="dot"></span></li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-cart"></use></svg>E-commerce</li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-target"></use></svg>UX/UI<span class="dot"></span></li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-trending-up"></use></svg>Marketing</li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-layers"></use></svg>Automação<span class="dot"></span></li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-monitor"></use></svg>Web Design</li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-code"></use></svg>Desenvolvimento<span class="dot"></span></li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-palette"></use></svg>Branding</li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-zap"></use></svg>Landing Pages<span class="dot"></span></li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-cart"></use></svg>E-commerce</li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-target"></use></svg>UX/UI<span class="dot"></span></li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-trending-up"></use></svg>Marketing</li>
+          <li class="specialty-item"><svg><use href="assets/icons/sprite.svg#icon-layers"></use></svg>Automação<span class="dot"></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== SOBRE ===== -->
+    <section class="section" id="sobre" aria-labelledby="sobre-title">
+      <div class="container split">
+        <div class="about-visual" data-reveal aria-hidden="true">
+          <div class="about-visual-panel about-visual-panel--1"></div>
+          <div class="about-visual-panel about-visual-panel--2"><span></span><span></span><span></span><span></span></div>
+        </div>
+
+        <div data-reveal style="--reveal-delay:100ms">
+          <span class="eyebrow">Sobre</span>
+          <h2 id="sobre-title">Não criamos apenas páginas bonitas. Criamos experiências que ajudam empresas a crescer.</h2>
+          <p style="margin-top:var(--space-4)">
+            Há 5 anos ajudamos profissionais e empresas de diferentes áreas a se apresentarem
+            online com projetos que unem design, estratégia e tecnologia. Cada projeto começa
+            com uma pergunta simples: o que este trabalho precisa gerar para quem contratou?
+          </p>
+          <p style="margin-top:var(--space-3)">
+            Trabalhamos de forma próxima, com processo transparente e comunicação constante —
+            do primeiro briefing até o suporte pós-entrega.
+          </p>
+
+          <div class="about-meta">
+            <div class="about-meta-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-map-pin"></use></svg><div><strong>Localização</strong><span>Atendimento remoto — Brasil todo</span></div></div>
+            <div class="about-meta-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-clock"></use></svg><div><strong>Disponibilidade</strong><span>Novos projetos a partir de [mês/ano]</span></div></div>
+            <div class="about-meta-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-award"></use></svg><div><strong>Experiência</strong><span>5 anos, +50 projetos</span></div></div>
+            <div class="about-meta-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-shield-check"></use></svg><div><strong>Forma de trabalho</strong><span>Processo transparente, prazos claros</span></div></div>
+          </div>
+
+          <div class="about-values">
+            <span class="tag">Design personalizado</span>
+            <span class="tag">Foco em resultado</span>
+            <span class="tag">Comunicação próxima</span>
+            <span class="tag">Entrega organizada</span>
+          </div>
+
+          <a href="#contato" class="btn btn-secondary" style="margin-top:var(--space-8)" data-track="click_cta_principal" data-track-label="sobre">Vamos conversar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NÚMEROS E RESULTADOS ===== -->
+    <section class="section" style="background:var(--ink)" aria-label="Resultados em números" data-tone="ink">
+      <div class="container">
+        <!-- Números de demonstração — [SUBSTITUIR] pelos números reais antes de publicar. -->
+        <div class="stats-grid">
+          <div data-reveal><p class="stat-number"><span data-counter="50" data-suffix="+">50+</span></p><p class="stat-label">Projetos entregues</p></div>
+          <div data-reveal style="--reveal-delay:80ms"><p class="stat-number"><span data-counter="30" data-suffix="+">30+</span></p><p class="stat-label">Clientes atendidos</p></div>
+          <div data-reveal style="--reveal-delay:160ms"><p class="stat-number"><span data-counter="5" data-suffix=" anos">5 anos</span></p><p class="stat-label">De experiência</p></div>
+          <div data-reveal style="--reveal-delay:240ms"><p class="stat-number"><span data-counter="98" data-suffix="%">98%</span></p><p class="stat-label">De satisfação</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJETOS EM DESTAQUE ===== -->
+    <section class="section" id="projetos" aria-labelledby="projetos-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Projetos</span>
+          <h2 id="projetos-title">Projetos que já saíram do papel</h2>
+          <p>Uma seleção de trabalhos de demonstração — substitua pelos seus projetos reais.</p>
+        </div>
+
+        <div class="filters" id="projectFilters" role="group" aria-label="Filtrar projetos por categoria">
+          <button class="filter-btn" data-filter="todos" aria-pressed="true">Todos</button>
+          <button class="filter-btn" data-filter="sites" aria-pressed="false">Sites</button>
+          <button class="filter-btn" data-filter="landing-pages" aria-pressed="false">Landing Pages</button>
+          <button class="filter-btn" data-filter="identidade-visual" aria-pressed="false">Identidade visual</button>
+          <button class="filter-btn" data-filter="ecommerce" aria-pressed="false">E-commerce</button>
+          <button class="filter-btn" data-filter="social-media" aria-pressed="false">Social Media</button>
+          <button class="filter-btn" data-filter="sistemas" aria-pressed="false">Sistemas</button>
+        </div>
+
+        <!-- [Template] cada card abaixo aponta para projeto.html como demonstração. Ao adicionar projetos reais, duplique projeto.html para cada case e ajuste o link "Ver case" correspondente. -->
+        <div class="projects-grid">
+          <article class="project-card" data-span="wide" data-category="sistemas" data-project-card data-reveal>
+            <div class="project-media" style="--proj-a:#5b21ff;--proj-b:#3f13c9">
+              <svg class="project-glyph" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-monitor"></use></svg>
+              <span class="project-view">Ver case <svg aria-hidden="true" style="width:14px;height:14px"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>Sistemas</span>&middot;<span>2025</span></div>
+              <h3>Plataforma Nortis</h3>
+              <p>Redesenho completo de um painel interno para uma empresa de logística de médio porte.</p>
+              <div class="project-tags"><span class="tag">UX/UI</span><span class="tag">Desenvolvimento</span><span class="tag">Design System</span></div>
+              <p class="project-result"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-trending-up"></use></svg>+40% em produtividade da equipe</p>
+              <a href="projeto.html" class="project-link" data-track="click_project" data-track-label="Plataforma Nortis"><span class="visually-hidden">Ver case: Plataforma Nortis</span></a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="ecommerce" data-project-card data-reveal style="--reveal-delay:60ms">
+            <div class="project-media" style="--proj-a:#ff5b6e;--proj-b:#c9203a">
+              <svg class="project-glyph" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-cart"></use></svg>
+              <span class="project-view">Ver case <svg aria-hidden="true" style="width:14px;height:14px"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>E-commerce</span>&middot;<span>2024</span></div>
+              <h3>Loja Aurel</h3>
+              <p>Loja virtual de moda autoral com foco em conversão e experiência de compra.</p>
+              <div class="project-tags"><span class="tag">E-commerce</span><span class="tag">UX/UI</span></div>
+              <p class="project-result"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-trending-up"></use></svg>+28% em conversão</p>
+              <a href="projeto.html" class="project-link" data-track="click_project" data-track-label="Loja Aurel"><span class="visually-hidden">Ver case: Loja Aurel</span></a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="identidade-visual" data-project-card data-reveal style="--reveal-delay:120ms">
+            <div class="project-media" style="--proj-a:#f5a524;--proj-b:#c9791a">
+              <svg class="project-glyph" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-palette"></use></svg>
+              <span class="project-view">Ver case <svg aria-hidden="true" style="width:14px;height:14px"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>Identidade visual</span>&middot;<span>2024</span></div>
+              <h3>Bruma Café</h3>
+              <p>Naming, identidade e aplicação de marca para uma torrefação independente.</p>
+              <div class="project-tags"><span class="tag">Branding</span><span class="tag">Naming</span></div>
+              <p class="project-result"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-trending-up"></use></svg>Nova identidade em 15 pontos de contato</p>
+              <a href="projeto.html" class="project-link" data-track="click_project" data-track-label="Bruma Café"><span class="visually-hidden">Ver case: Bruma Café</span></a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="landing-pages" data-project-card data-reveal>
+            <div class="project-media" style="--proj-a:#17a768;--proj-b:#0d7a4a">
+              <svg class="project-glyph" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-zap"></use></svg>
+              <span class="project-view">Ver case <svg aria-hidden="true" style="width:14px;height:14px"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>Landing Page</span>&middot;<span>2024</span></div>
+              <h3>Auravita</h3>
+              <p>Landing de lançamento para uma linha de suplementos naturais.</p>
+              <div class="project-tags"><span class="tag">Landing Page</span><span class="tag">Copywriting</span></div>
+              <p class="project-result"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-trending-up"></use></svg>+65% na taxa de conversão</p>
+              <a href="projeto.html" class="project-link" data-track="click_project" data-track-label="Auravita"><span class="visually-hidden">Ver case: Auravita</span></a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="social-media" data-project-card data-reveal style="--reveal-delay:60ms">
+            <div class="project-media" style="--proj-a:#e0479e;--proj-b:#9c1f6d">
+              <svg class="project-glyph" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-layers"></use></svg>
+              <span class="project-view">Ver case <svg aria-hidden="true" style="width:14px;height:14px"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>Social Media</span>&middot;<span>2023</span></div>
+              <h3>Social Nortis</h3>
+              <p>Direção de arte e conteúdo para redes sociais ao longo de dois trimestres.</p>
+              <div class="project-tags"><span class="tag">Social Media</span><span class="tag">Design</span></div>
+              <p class="project-result"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-trending-up"></use></svg>3x mais engajamento</p>
+              <a href="projeto.html" class="project-link" data-track="click_project" data-track-label="Social Nortis"><span class="visually-hidden">Ver case: Social Nortis</span></a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="sites" data-project-card data-reveal style="--reveal-delay:120ms">
+            <div class="project-media" style="--proj-a:#3fa7d6;--proj-b:#1c5f82">
+              <svg class="project-glyph" aria-hidden="true"><use href="assets/icons/sprite.svg#icon-monitor"></use></svg>
+              <span class="project-view">Ver case <svg aria-hidden="true" style="width:14px;height:14px"><use href="assets/icons/sprite.svg#icon-arrow-right"></use></svg></span>
+            </div>
+            <div class="project-body">
+              <div class="project-meta"><span>Site institucional</span>&middot;<span>2023</span></div>
+              <h3>Cedro Arquitetura</h3>
+              <p>Site institucional para um escritório de arquitetura com portfólio de projetos.</p>
+              <div class="project-tags"><span class="tag">Desenvolvimento</span><span class="tag">SEO</span></div>
+              <p class="project-result"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-trending-up"></use></svg>-45% na taxa de rejeição</p>
+              <a href="projeto.html" class="project-link" data-track="click_project" data-track-label="Cedro Arquitetura"><span class="visually-hidden">Ver case: Cedro Arquitetura</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVIÇOS ===== -->
+    <section class="section section--alt" id="servicos" aria-labelledby="servicos-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Serviços</span>
+          <h2 id="servicos-title">Como podemos ajudar o seu projeto</h2>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="card" data-reveal>
+            <div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-monitor"></use></svg></div>
+            <h3>Criação de sites</h3>
+            <p>Sites institucionais rápidos, organizados e prontos para gerar contato.</p>
+            <ul class="card-deliverables"><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Design responsivo</li><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>SEO técnico incluso</li></ul>
+            <a href="#contato" class="btn btn-ghost btn-sm" data-track="click_cta_principal" data-track-label="servico_sites">Solicitar orçamento →</a>
+          </article>
+          <article class="card" data-reveal style="--reveal-delay:60ms">
+            <div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-zap"></use></svg></div>
+            <h3>Landing pages de alta conversão</h3>
+            <p>Páginas focadas em transformar tráfego pago em contatos qualificados.</p>
+            <ul class="card-deliverables"><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Copy persuasiva</li><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Testes de performance</li></ul>
+            <a href="#contato" class="btn btn-ghost btn-sm" data-track="click_cta_principal" data-track-label="servico_landing">Solicitar orçamento →</a>
+          </article>
+          <article class="card" data-reveal style="--reveal-delay:120ms">
+            <div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-palette"></use></svg></div>
+            <h3>Identidade visual</h3>
+            <p>Marca completa: naming, logotipo, paleta e aplicação em todos os pontos de contato.</p>
+            <ul class="card-deliverables"><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Manual de marca</li><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Aplicações prontas</li></ul>
+            <a href="#contato" class="btn btn-ghost btn-sm" data-track="click_cta_principal" data-track-label="servico_identidade">Solicitar orçamento →</a>
+          </article>
+          <article class="card" data-reveal>
+            <div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-target"></use></svg></div>
+            <h3>UX/UI Design</h3>
+            <p>Interfaces pensadas para reduzir atrito e aumentar conversão em produtos digitais.</p>
+            <ul class="card-deliverables"><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Protótipos navegáveis</li><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Testes com usuários</li></ul>
+            <a href="#contato" class="btn btn-ghost btn-sm" data-track="click_cta_principal" data-track-label="servico_uxui">Solicitar orçamento →</a>
+          </article>
+          <article class="card" data-reveal style="--reveal-delay:60ms">
+            <div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-cart"></use></svg></div>
+            <h3>Lojas virtuais</h3>
+            <p>E-commerce completo, do catálogo ao checkout, pensado para vender.</p>
+            <ul class="card-deliverables"><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Integração de pagamento</li><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Catálogo otimizado</li></ul>
+            <a href="#contato" class="btn btn-ghost btn-sm" data-track="click_cta_principal" data-track-label="servico_loja">Solicitar orçamento →</a>
+          </article>
+          <article class="card" data-reveal style="--reveal-delay:120ms">
+            <div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-briefcase"></use></svg></div>
+            <h3>Consultoria digital</h3>
+            <p>Diagnóstico e plano de ação para melhorar a presença digital do seu negócio.</p>
+            <ul class="card-deliverables"><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Diagnóstico completo</li><li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Plano de ação priorizado</li></ul>
+            <a href="#contato" class="btn btn-ghost btn-sm" data-track="click_cta_principal" data-track-label="servico_consultoria">Solicitar orçamento →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROCESSO DE TRABALHO ===== -->
+    <section class="section" id="processo" aria-labelledby="processo-title">
+      <div class="container" style="max-width:760px">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Processo</span>
+          <h2 id="processo-title">Como o projeto acontece</h2>
+        </div>
+
+        <div class="timeline" data-reveal>
+          <div class="timeline-step"><div class="timeline-number">01</div><div><h3>Briefing</h3><p>Entendemos seu contexto, objetivos e o que já foi tentado antes.</p></div></div>
+          <div class="timeline-step"><div class="timeline-number">02</div><div><h3>Planejamento</h3><p>Definimos escopo, cronograma e os próximos passos com clareza.</p></div></div>
+          <div class="timeline-step"><div class="timeline-number">03</div><div><h3>Pesquisa</h3><p>Analisamos referências, concorrência e o público que você quer alcançar.</p></div></div>
+          <div class="timeline-step"><div class="timeline-number">04</div><div><h3>Criação</h3><p>Damos forma às ideias em wireframes, conceitos visuais e conteúdo.</p></div></div>
+          <div class="timeline-step"><div class="timeline-number">05</div><div><h3>Desenvolvimento</h3><p>Construímos o projeto com atenção a detalhes técnicos e performance.</p></div></div>
+          <div class="timeline-step"><div class="timeline-number">06</div><div><h3>Revisão</h3><p>Você avalia e solicita ajustes dentro do escopo combinado.</p></div></div>
+          <div class="timeline-step"><div class="timeline-number">07</div><div><h3>Entrega</h3><p>O projeto vai ao ar com tudo revisado e funcionando.</p></div></div>
+          <div class="timeline-step"><div class="timeline-number">08</div><div><h3>Suporte</h3><p>Acompanhamos o pós-entrega para garantir que tudo continue bem.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DIFERENCIAIS ===== -->
+    <section class="section section--alt" aria-labelledby="diferenciais-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Diferenciais</span>
+          <h2 id="diferenciais-title">Por que trabalhar com a gente</h2>
+        </div>
+        <div class="grid grid-3">
+          <div class="card" data-reveal><div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-palette"></use></svg></div><h3>Design personalizado</h3><p>Nada de templates genéricos — cada projeto nasce do seu contexto.</p></div>
+          <div class="card" data-reveal style="--reveal-delay:60ms"><div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-target"></use></svg></div><h3>Foco em conversão</h3><p>Design bonito é ótimo — design que gera resultado é melhor ainda.</p></div>
+          <div class="card" data-reveal style="--reveal-delay:120ms"><div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-zap"></use></svg></div><h3>Código otimizado</h3><p>Sites rápidos, sem excesso de peso, pensados para o PageSpeed.</p></div>
+          <div class="card" data-reveal><div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-monitor"></use></svg></div><h3>Responsividade total</h3><p>Testado em telas pequenas de verdade, não só no navegador.</p></div>
+          <div class="card" data-reveal style="--reveal-delay:60ms"><div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-trending-up"></use></svg></div><h3>SEO técnico</h3><p>Estrutura pensada desde o início para ser encontrada no Google.</p></div>
+          <div class="card" data-reveal style="--reveal-delay:120ms"><div class="card-icon"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-users"></use></svg></div><h3>Suporte próximo</h3><p>Um canal direto com você, sem intermediários, do início ao fim.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TECNOLOGIAS E FERRAMENTAS ===== -->
+    <section class="section" aria-labelledby="tech-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Ferramentas</span>
+          <h2 id="tech-title">Tecnologias que usamos no dia a dia</h2>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center" data-reveal>
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+          <span class="tag">WordPress</span><span class="tag">WooCommerce</span><span class="tag">GitHub</span>
+          <span class="tag">Figma</span><span class="tag">Google Analytics</span><span class="tag">Google Ads</span>
+          <span class="tag">Meta Ads</span><span class="tag">SEO técnico</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DEPOIMENTOS ===== -->
+    <section class="section section--alt" id="depoimentos" aria-labelledby="depoimentos-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Depoimentos</span>
+          <h2 id="depoimentos-title">O que dizem sobre o trabalho</h2>
+          <p>Depoimentos fictícios de demonstração — substitua pelos reais.</p>
+        </div>
+        <div class="testimonials-scroll" data-reveal>
+          <article class="testimonial-card">
+            <span class="stars" aria-hidden="true"><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg></span>
+            <p class="testimonial-quote" style="margin-top:var(--space-3)">"Entregaram exatamente o que precisávamos, no prazo combinado. O site já se pagou no primeiro mês."</p>
+            <div class="testimonial-person"><span class="testimonial-avatar" aria-hidden="true">MC</span><div><p class="testimonial-name">Marina Costa</p><p class="testimonial-role">Fundadora, Bruma Café</p><span class="tag testimonial-service">Identidade visual</span></div></div>
+          </article>
+          <article class="testimonial-card">
+            <span class="stars" aria-hidden="true"><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg></span>
+            <p class="testimonial-quote" style="margin-top:var(--space-3)">"Profissionalismo do início ao fim. A comunicação foi clara em todas as etapas do projeto."</p>
+            <div class="testimonial-person"><span class="testimonial-avatar" aria-hidden="true">RA</span><div><p class="testimonial-name">Rafael Andrade</p><p class="testimonial-role">Sócio, Cedro Arquitetura</p><span class="tag testimonial-service">Site institucional</span></div></div>
+          </article>
+          <article class="testimonial-card">
+            <span class="stars" aria-hidden="true"><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg></span>
+            <p class="testimonial-quote" style="margin-top:var(--space-3)">"A landing page superou nossa expectativa de conversão já nas primeiras semanas no ar."</p>
+            <div class="testimonial-person"><span class="testimonial-avatar" aria-hidden="true">JL</span><div><p class="testimonial-name">Juliana Lopes</p><p class="testimonial-role">Gerente, Auravita</p><span class="tag testimonial-service">Landing page</span></div></div>
+          </article>
+          <article class="testimonial-card">
+            <span class="stars" aria-hidden="true"><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg><svg><use href="assets/icons/sprite.svg#icon-star"></use></svg></span>
+            <p class="testimonial-quote" style="margin-top:var(--space-3)">"Indico sem dúvidas. Equipe atenciosa e o resultado ficou acima do que eu esperava."</p>
+            <div class="testimonial-person"><span class="testimonial-avatar" aria-hidden="true">TS</span><div><p class="testimonial-name">Thiago Santos</p><p class="testimonial-role">Diretor, Nortis Tech</p><span class="tag testimonial-service">Plataforma web</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CLIENTES / PARCEIROS ===== -->
+    <section class="logos" aria-label="Marcas que já confiaram no trabalho" style="padding-block:var(--space-8);border-block:1px solid var(--border)">
+      <div class="container"><p class="text-center" style="font-size:var(--fs-xs);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-6)">Marcas que já confiaram no nosso trabalho</p></div>
+      <div class="marquee-wrap">
+        <ul class="marquee-track" aria-hidden="true">
+          <li class="logo-item">Nortis Tech</li><li class="logo-item">Bruma Café</li><li class="logo-item">Cedro Arquitetura</li><li class="logo-item">Auravita</li><li class="logo-item">Aurel Studio</li><li class="logo-item">Praxis Legal</li>
+          <li class="logo-item">Nortis Tech</li><li class="logo-item">Bruma Café</li><li class="logo-item">Cedro Arquitetura</li><li class="logo-item">Auravita</li><li class="logo-item">Aurel Studio</li><li class="logo-item">Praxis Legal</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container" style="max-width:800px">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Dúvidas frequentes</span>
+          <h2 id="faq-title">Perguntas frequentes</h2>
+        </div>
+        <div class="accordion" data-reveal>
+          <details class="accordion-item" name="faq"><summary>Quanto custa um projeto?<svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-down"></use></svg></summary><p>Depende do escopo. Após entender sua necessidade, enviamos uma proposta detalhada e sem surpresas.</p></details>
+          <details class="accordion-item" name="faq"><summary>Qual o prazo de entrega?<svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-down"></use></svg></summary><p>Varia conforme o projeto. Em média, entre 3 e 8 semanas, com cronograma definido no planejamento.</p></details>
+          <details class="accordion-item" name="faq"><summary>Como funciona o pagamento?<svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-down"></use></svg></summary><p><em>[Template]</em> descreva aqui as condições de pagamento aceitas.</p></details>
+          <details class="accordion-item" name="faq"><summary>O site será responsivo?<svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-down"></use></svg></summary><p>Sim, todos os projetos são desenvolvidos para funcionar bem em qualquer tamanho de tela.</p></details>
+          <details class="accordion-item" name="faq"><summary>Vocês oferecem suporte?<svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-down"></use></svg></summary><p>Sim, oferecemos suporte após a entrega — os termos são definidos na proposta.</p></details>
+          <details class="accordion-item" name="faq"><summary>O domínio está incluso?<svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-down"></use></svg></summary><p><em>[Template]</em> informe aqui se o domínio está incluso no projeto.</p></details>
+          <details class="accordion-item" name="faq"><summary>A hospedagem está inclusa?<svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-down"></use></svg></summary><p><em>[Template]</em> informe aqui se a hospedagem está inclusa no projeto.</p></details>
+          <details class="accordion-item" name="faq"><summary>Posso solicitar alterações?<svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-down"></use></svg></summary><p>Sim, o número de rodadas de ajuste incluídas é combinado antes do início do projeto.</p></details>
+          <details class="accordion-item" name="faq"><summary>O site terá SEO?<svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-down"></use></svg></summary><p>Sim, aplicamos uma configuração básica de SEO técnico em todos os projetos.</p></details>
+          <details class="accordion-item" name="faq"><summary>Vocês trabalham com empresas de qualquer região?<svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-chevron-down"></use></svg></summary><p>Sim, o atendimento é remoto e cobre todo o Brasil.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section class="section" aria-label="Chamada final">
+      <div class="container">
+        <div class="cta-final" data-reveal>
+          <h2>Tem uma ideia? Vamos transformá-la em um projeto que merece ser visto.</h2>
+          <p>Conte um pouco sobre o seu projeto e vamos conversar sobre os próximos passos.</p>
+          <div class="hero-actions">
+            <a href="#contato" class="btn btn-primary btn-lg" data-track="click_cta_principal" data-track-label="final">Quero tirar meu projeto do papel</a>
+            <a href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg" data-track="click_whatsapp" data-track-label="final">
+              <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-whatsapp"></use></svg>
+              Falar no WhatsApp
+            </a>
+          </div>
+          <div class="cta-final-info">
+            <span class="cta-final-info-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-mail"></use></svg>ola@seudominio.com.br</span>
+            <span class="cta-final-info-item"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-clock"></use></svg>Novos projetos a partir de [mês/ano]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTATO ===== -->
+    <section class="section section--alt" id="contato" aria-labelledby="contato-title">
+      <div class="container">
+        <div class="section-header section-header--center" data-reveal>
+          <span class="eyebrow">Contato</span>
+          <h2 id="contato-title">Vamos conversar sobre o seu projeto?</h2>
+          <p>Preencha o formulário abaixo com o máximo de detalhes que puder.</p>
+        </div>
+
+        <div style="max-width:680px;margin-inline:auto" data-reveal>
+          <div class="form-card">
+            <form id="leadForm" novalidate>
+              <div class="form-honeypot" aria-hidden="true">
+                <label for="field-website">Não preencha este campo</label>
+                <input type="text" id="field-website" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="form-row">
+                <div class="form-field" data-field="name">
+                  <label for="field-name">Nome completo</label>
+                  <input type="text" id="field-name" name="name" autocomplete="name" required minlength="3" aria-describedby="error-name" />
+                  <span class="form-error" id="error-name" role="alert">Informe seu nome completo.</span>
+                </div>
+                <div class="form-field" data-field="phone">
+                  <label for="field-phone">Telefone / WhatsApp</label>
+                  <input type="tel" id="field-phone" name="phone" inputmode="numeric" placeholder="(00) 00000-0000" autocomplete="tel" required aria-describedby="error-phone" />
+                  <span class="form-error" id="error-phone" role="alert">Informe um telefone válido com DDD.</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field" data-field="email">
+                  <label for="field-email">E-mail</label>
+                  <input type="email" id="field-email" name="email" autocomplete="email" required aria-describedby="error-email" />
+                  <span class="form-error" id="error-email" role="alert">Informe um e-mail válido.</span>
+                </div>
+                <div class="form-field" data-field="company">
+                  <label for="field-company">Empresa <span class="optional">(opcional)</span></label>
+                  <input type="text" id="field-company" name="company" autocomplete="organization" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field" data-field="projectType">
+                  <label for="field-project-type">Tipo de projeto</label>
+                  <select id="field-project-type" name="projectType">
+                    <option value="">Selecione uma opção</option>
+                    <option value="site">Site institucional</option>
+                    <option value="landing">Landing page</option>
+                    <option value="ecommerce">Loja virtual</option>
+                    <option value="identidade">Identidade visual</option>
+                    <option value="sistema">Sistema personalizado</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                </div>
+                <div class="form-field" data-field="budget">
+                  <label for="field-budget">Faixa de investimento</label>
+                  <select id="field-budget" name="budget">
+                    <option value="">Selecione uma opção</option>
+                    <option value="ate-3k">Até R$ 3.000</option>
+                    <option value="3k-8k">R$ 3.000 a R$ 8.000</option>
+                    <option value="8k-15k">R$ 8.000 a R$ 15.000</option>
+                    <option value="acima-15k">Acima de R$ 15.000</option>
+                    <option value="nao-sei">Ainda não sei</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-field" data-field="timeline">
+                <label for="field-timeline">Prazo desejado</label>
+                <select id="field-timeline" name="timeline">
+                  <option value="">Selecione uma opção</option>
+                  <option value="urgente">O quanto antes</option>
+                  <option value="1-mes">Até 1 mês</option>
+                  <option value="1-3-meses">1 a 3 meses</option>
+                  <option value="sem-pressa">Sem pressa</option>
+                </select>
+              </div>
+
+              <div class="form-field" data-field="message">
+                <label for="field-message">Mensagem</label>
+                <textarea id="field-message" name="message" required minlength="10" aria-describedby="error-message"></textarea>
+                <span class="form-error" id="error-message" role="alert">Conte um pouco sobre o seu projeto (mín. 10 caracteres).</span>
+              </div>
+
+              <div class="form-consent" data-field="consent">
+                <input type="checkbox" id="field-consent" name="consent" required aria-describedby="error-consent" />
+                <div>
+                  <label for="field-consent">Concordo com o uso dos meus dados para contato, conforme a <a href="#">Política de Privacidade</a>, de acordo com a LGPD.</label>
+                  <span class="form-error" id="error-consent" role="alert">É necessário aceitar o uso dos dados para enviar o formulário.</span>
+                </div>
+              </div>
+
+              <div class="alert alert-error" id="formGenericError" role="alert" hidden style="margin-bottom:var(--space-5)">
+                <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-alert-circle"></use></svg>
+                <span>Não foi possível enviar agora. Tente novamente ou fale pelo WhatsApp.</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-lg">
+                <span class="btn-spinner" aria-hidden="true"></span>
+                <span class="btn-label">Enviar mensagem</span>
+              </button>
+              <p class="form-hint" style="text-align:center;margin-top:var(--space-3)">Seus dados estão protegidos e não serão compartilhados com terceiros.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#topo" class="header-logo" style="color:#fff"><svg aria-hidden="true" style="color:var(--primary-light)"><use href="assets/icons/sprite.svg#icon-logo"></use></svg>Estúdio Vero</a>
+          <p>Design, estratégia e tecnologia trabalhando juntos.</p>
+          <div class="social-links" style="margin-top:var(--space-5)">
+            <a href="https://instagram.com/seudominio" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-instagram"></use></svg></a>
+            <a href="https://linkedin.com/in/seudominio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-linkedin"></use></svg></a>
+            <a href="https://behance.net/seudominio" target="_blank" rel="noopener noreferrer" aria-label="Behance"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-behance"></use></svg></a>
+            <a href="https://dribbble.com/seudominio" target="_blank" rel="noopener noreferrer" aria-label="Dribbble"><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-dribbble"></use></svg></a>
+          </div>
+        </div>
+
+        <nav aria-label="Links rápidos">
+          <p class="footer-heading">Navegação</p>
+          <ul class="footer-links"><li><a href="#sobre">Sobre</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#servicos">Serviços</a></li><li><a href="#depoimentos">Depoimentos</a></li></ul>
+        </nav>
+
+        <nav aria-label="Links legais">
+          <p class="footer-heading">Legal</p>
+          <ul class="footer-links"><li><a href="#">Política de privacidade</a></li><li><a href="#">Termos de uso</a></li></ul>
+        </nav>
+
+        <div>
+          <p class="footer-heading">Contato</p>
+          <ul class="footer-contact">
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-phone"></use></svg>(00) 0000-0000</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-mail"></use></svg>ola@seudominio.com.br</li>
+            <li><svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-map-pin"></use></svg>Rua Exemplo, 500 — Sua Cidade/UF</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear"></span> Estúdio Vero. Todos os direitos reservados. CNPJ 00.000.000/0001-00 (fictício).</p>
+        <div class="footer-legal"><a href="#">Política de privacidade</a><a href="#">Termos de uso</a></div>
+      </div>
+      <p class="footer-note">Criado com estratégia, design e algumas boas xícaras de café.</p>
+    </div>
+  </footer>
+
+  <!-- ===== EXTRAS FLUTUANTES ===== -->
+  <div class="float-actions">
+    <button class="float-btn float-btn--top" id="backToTop" aria-label="Voltar ao topo" data-visible="false">
+      <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-arrow-down" style="transform:rotate(180deg)"></use></svg>
+    </button>
+    <a class="float-btn float-btn--whatsapp" href="https://wa.me/5500000000000" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp" data-track="click_whatsapp" data-track-label="floating_button">
+      <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-whatsapp"></use></svg>
+    </a>
+  </div>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" data-visible="false">
+    <p>Usamos cookies para melhorar sua experiência de navegação, conforme a nossa <a href="#">Política de Privacidade</a> e a LGPD.</p>
+    <div class="cookie-actions">
+      <button class="btn btn-primary btn-sm" id="cookieAccept">Aceitar</button>
+      <button class="btn btn-secondary btn-sm" id="cookieDecline">Recusar</button>
+    </div>
+  </div>
+
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>

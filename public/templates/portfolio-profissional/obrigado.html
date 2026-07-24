@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+  PÁGINA DE OBRIGADO — exibida após o envio do formulário de contato
+  (ver assets/js/script.js, seção 11). Fica SEMPRE com noindex — página
+  de obrigado não deve aparecer no Google.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme-preference");
+        if (saved === "dark" || saved === "light") {
+          document.documentElement.setAttribute("data-theme", saved);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <title>Mensagem enviada | Estúdio Vero</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="header header--solid">
+    <div class="container">
+      <a href="index.html" class="header-logo">
+        <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-logo"></use></svg>
+        Estúdio Vero
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="thanks-hero">
+      <div class="container">
+        <div class="thanks-icon">
+          <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-check-circle"></use></svg>
+        </div>
+        <h1>Mensagem enviada com sucesso!</h1>
+        <p>Obrigado pelo contato. Vamos analisar as informações do seu projeto com atenção.</p>
+
+        <ul class="thanks-steps">
+          <li style="display:flex;align-items:flex-start;gap:var(--space-3)"><svg aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;color:var(--success);margin-top:2px"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Vamos revisar o tipo de projeto e a faixa de investimento informados</li>
+          <li style="display:flex;align-items:flex-start;gap:var(--space-3)"><svg aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;color:var(--success);margin-top:2px"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Entramos em contato pelo e-mail ou telefone informado</li>
+          <li style="display:flex;align-items:flex-start;gap:var(--space-3)"><svg aria-hidden="true" style="width:20px;height:20px;flex-shrink:0;color:var(--success);margin-top:2px"><use href="assets/icons/sprite.svg#icon-check"></use></svg>Tempo médio de resposta: até 1 dia útil</li>
+        </ul>
+
+        <div class="thanks-actions">
+          <a href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Acabei%20de%20enviar%20o%20formul%C3%A1rio%20no%20site%20e%20gostaria%20de%20agilizar%20o%20contato." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">
+            <svg aria-hidden="true"><use href="assets/icons/sprite.svg#icon-whatsapp"></use></svg>
+            Falar agora no WhatsApp
+          </a>
+          <a href="index.html" class="btn btn-secondary btn-lg">Voltar ao portfólio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0">
+        <p>&copy; <span id="currentYear"></span> Estúdio Vero. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("currentYear").textContent = String(new Date().getFullYear());
+
+    // Evento de conversão: dispara ao carregar a página de obrigado, que é
+    // o jeito mais confiável de confirmar um lead. Configure o gatilho
+    // "generate_lead" no GTM/GA4, ou troque por uma conversão do Google Ads:
+    //
+    //   gtag('event', 'conversion', { send_to: 'AW-XXXXXXXXX/XXXXXXXXXXXXXXXXXXXX' });
+    //
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "generate_lead", page_path: window.location.pathname });
+  </script>
+</body>
+</html>

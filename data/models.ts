@@ -37,6 +37,8 @@ export const siteModels: SiteModel[] = [
     name: "Portfólio Profissional",
     category: "Portfólio profissional",
     blurb: "Pensado para exibir trabalhos, projetos ou cases de forma visual.",
+    previewImage: "/images/models/portfolio-profissional.jpg",
+    demoUrl: "/templates/portfolio-profissional/index.html",
   },
   {
     id: "vitrine-servicos",
