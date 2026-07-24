@@ -1,0 +1,120 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   Troque só esta camada para adaptar o template a outra marca: cores,
+   tipografia, espaçamento e sombras vêm todos daqui. Nada abaixo deste
+   arquivo deve ter uma cor "hardcoded".
+   ========================================================================== */
+
+:root {
+  /* ---- Cor: marca ---- */
+  --color-primary-h: 222;
+  --color-primary-s: 89%;
+  --color-primary-l: 32%;
+  --color-primary: hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l));
+  --color-primary-dark: hsl(var(--color-primary-h) var(--color-primary-s) 22%);
+  --color-primary-light: hsl(var(--color-primary-h) 85% 55%);
+  --color-primary-50: hsl(var(--color-primary-h) 85% 96%);
+
+  --color-secondary: hsl(38 92% 50%);
+  --color-secondary-dark: hsl(38 92% 42%);
+
+  --color-accent: hsl(266 70% 58%);
+
+  /* ---- Cor: neutros ---- */
+  --color-dark: hsl(222 47% 8%);
+  --color-dark-soft: hsl(222 35% 14%);
+  --color-gray-900: hsl(222 20% 18%);
+  --color-gray-700: hsl(222 12% 35%);
+  --color-gray-500: hsl(222 9% 52%);
+  --color-gray-300: hsl(220 14% 84%);
+  --color-gray-200: hsl(220 20% 91%);
+  --color-gray-100: hsl(220 25% 96%);
+  --color-light: hsl(0 0% 100%);
+
+  /* ---- Cor: feedback ---- */
+  --color-success: hsl(152 60% 38%);
+  --color-success-bg: hsl(152 60% 95%);
+  --color-warning: hsl(38 92% 50%);
+  --color-warning-bg: hsl(38 92% 95%);
+  --color-danger: hsl(4 78% 55%);
+  --color-danger-bg: hsl(4 78% 96%);
+
+  /* ---- Superfícies semânticas ---- */
+  --surface-page: var(--color-light);
+  --surface-alt: var(--color-gray-100);
+  --surface-inverse: var(--color-dark);
+  --text-heading: var(--color-dark);
+  --text-body: var(--color-gray-700);
+  --text-muted: var(--color-gray-500);
+  --text-on-inverse: var(--color-light);
+  --border-subtle: var(--color-gray-200);
+
+  /* ---- Tipografia ---- */
+  --font-heading: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: 3rem;
+  --fs-4xl: 3.75rem;
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.35;
+  --lh-normal: 1.6;
+
+  /* ---- Espaçamento (escala 4px) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 5rem;
+  --space-16: 7rem;
+  --space-20: 9rem;
+
+  --section-padding-y: clamp(4rem, 3rem + 4vw, 7rem);
+  --container-width: 1200px;
+  --container-padding-x: clamp(1.25rem, 1rem + 2vw, 2.5rem);
+
+  /* ---- Forma ---- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 999px;
+
+  /* ---- Elevação ---- */
+  --shadow-sm: 0 1px 2px hsl(222 30% 20% / 0.06), 0 1px 1px hsl(222 30% 20% / 0.04);
+  --shadow-md: 0 8px 24px -8px hsl(222 40% 20% / 0.18);
+  --shadow-lg: 0 24px 48px -16px hsl(222 45% 15% / 0.28);
+  --shadow-glow: 0 0 0 1px hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l) / 0.25), 0 16px 40px -12px hsl(var(--color-primary-h) var(--color-primary-s) var(--color-primary-l) / 0.35);
+
+  /* ---- Movimento ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 500ms;
+
+  /* ---- Camadas ---- */
+  --z-header: 100;
+  --z-overlay: 200;
+  --z-toast: 300;
+  --z-modal: 400;
+}
+
+/* Tema escuro opcional para seções de contraste (rodapé, CTA final, etc.)
+   aplicado via atributo, não via classe de cor manual em cada elemento. */
+[data-surface="inverse"] {
+  --surface-page: var(--surface-inverse);
+  --text-heading: var(--text-on-inverse);
+  --text-body: hsl(220 20% 78%);
+  --text-muted: hsl(220 14% 60%);
+  --border-subtle: hsl(222 30% 22%);
+}

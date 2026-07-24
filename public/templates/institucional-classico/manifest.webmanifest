@@ -1,0 +1,19 @@
+{
+  "name": "Nome da Empresa",
+  "short_name": "Nome da Empresa",
+  "description": "Soluções profissionais para o seu negócio.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#153E85",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -21,6 +21,8 @@ export const siteModels: SiteModel[] = [
     name: "Institucional Clássico",
     category: "Site institucional",
     blurb: "Apresenta a empresa, os serviços e os canais de contato em uma estrutura única e organizada.",
+    previewImage: "/images/models/institucional-classico.jpg",
+    demoUrl: "/templates/institucional-classico/index.html",
   },
   {
     id: "landing-conversao",
