@@ -29,6 +29,8 @@ export const siteModels: SiteModel[] = [
     name: "Landing de Conversão",
     category: "Landing page",
     blurb: "Focado em uma oferta específica, com o caminho mais curto possível até o WhatsApp.",
+    previewImage: "/images/models/landing-conversao.jpg",
+    demoUrl: "/templates/landing-conversao/index.html",
   },
   {
     id: "portfolio-profissional",

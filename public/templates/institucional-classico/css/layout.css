@@ -24,8 +24,11 @@
 }
 
 .header--solid {
-  background: hsl(0 0% 100% / 0.85);
-  backdrop-filter: blur(10px);
+  /* Sem backdrop-filter aqui de propósito: um filtro em qualquer
+     ancestral de um elemento position:fixed vira o "containing block"
+     dele (em vez do viewport) — isso quebrava a altura do menu mobile,
+     que é position:fixed e fica dentro deste header. */
+  background: hsl(0 0% 100% / 0.97);
   box-shadow: var(--shadow-sm);
   padding-block: var(--space-3);
 }

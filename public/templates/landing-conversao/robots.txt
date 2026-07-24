@@ -1,0 +1,14 @@
+# [Template] Este robots.txt bloqueia indexação por padrão porque este
+# arquivo hoje vive como demo dentro do site da VorinWeb. Ao publicar
+# para um cliente em domínio próprio, troque para a versão liberada
+# abaixo e ajuste a URL do sitemap. A página obrigado.html continua
+# bloqueada mesmo na versão de produção (ver <meta name="robots"> nela).
+
+User-agent: *
+Disallow: /
+
+# Versão para produção (descomente e ajuste o domínio ao publicar):
+# User-agent: *
+# Allow: /
+# Disallow: /obrigado.html
+# Sitemap: https://www.suaempresa.com.br/sitemap.xml

@@ -1,0 +1,19 @@
+{
+  "name": "Nome da Empresa — Avaliação Gratuita",
+  "short_name": "Nome da Empresa",
+  "description": "Solicite um orçamento gratuito e descubra a melhor solução para o seu negócio.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2551f2",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

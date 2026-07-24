@@ -146,6 +146,10 @@
 
 .alert svg { width: 20px; height: 20px; flex-shrink: 0; }
 
+/* [hidden] tem a mesma especificidade de .alert{display:flex} — sem
+   esta regra, o atributo hidden não conseguiria esconder o alerta. */
+.alert[hidden] { display: none; }
+
 .alert-success { background: var(--color-success-bg); color: var(--color-success); border-color: hsl(152 60% 85%); }
 .alert-danger { background: var(--color-danger-bg); color: var(--color-danger); border-color: hsl(4 78% 88%); }
 .alert-warning { background: var(--color-warning-bg); color: hsl(38 92% 34%); border-color: hsl(38 92% 82%); }
