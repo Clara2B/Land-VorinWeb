@@ -140,6 +140,16 @@
     gap: var(--space-5);
   }
 
+  .nav .header-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .nav .header-actions .btn {
+    width: 100%;
+  }
+
   .header:not(.header--solid) .nav .nav-link {
     color: var(--text-heading);
   }

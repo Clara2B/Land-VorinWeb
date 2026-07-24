@@ -43,7 +43,7 @@ export function ModelCard({ model }: ModelCardProps) {
         <h3 className="mt-0.5 text-sm font-bold text-white">{model.name}</h3>
         <p className="mt-1 flex-1 text-xs leading-snug text-slate-400">{model.blurb}</p>
 
-        <div className="mt-3 flex flex-col gap-1.5 sm:flex-row">
+        <div className="mt-3 flex flex-col gap-1.5">
           {model.demoUrl && (
             <a
               href={model.demoUrl}
