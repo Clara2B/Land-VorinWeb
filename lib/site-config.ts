@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "VorinWeb",
-  whatsappNumber: "5511939490204",
+  whatsappNumber: "5511934900204",
 };
 
 /**
