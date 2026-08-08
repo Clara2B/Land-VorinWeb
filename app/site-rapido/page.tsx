@@ -510,13 +510,20 @@ export default function SiteRapidoPage() {
 
         {/* ===== PROJETOS REAIS ===== */}
         <Section as="section" id="projetos" className="mt-16 scroll-mt-16 sm:mt-24">
-          <h2 className="text-center text-xl font-extrabold text-white sm:text-3xl">
-            Empresas que a {siteConfig.name} já colocou online
-          </h2>
-          <div className="mt-6 flex flex-wrap items-stretch justify-center gap-4">
-            {cases.map((project) => (
-              <ProjectCard key={project.name} project={project} />
-            ))}
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5 sm:p-10">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="text-xl font-extrabold text-white sm:text-3xl">
+                Empresas que a {siteConfig.name} já colocou online
+              </h2>
+              <p className="mt-2 text-sm text-slate-400 sm:text-base">
+                Projetos reais, entregues e no ar — veja o resultado com seus próprios olhos.
+              </p>
+            </div>
+            <div className="mt-6 flex flex-wrap items-stretch justify-center gap-4">
+              {cases.map((project) => (
+                <ProjectCard key={project.name} project={project} />
+              ))}
+            </div>
           </div>
         </Section>
 
