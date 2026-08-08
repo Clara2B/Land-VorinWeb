@@ -1,0 +1,340 @@
+/* ==========================================================================
+   LAYOUT — header, navegação, rodapé e grids estruturais das seções.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------
+   Header
+   Transparente sobre o hero; ganha fundo sólido e sombra ao rolar
+   (classe .header--solid alternada via js/header.js).
+--------------------------------------------------------------------- */
+.header {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: var(--z-header);
+  padding-block: var(--space-4);
+  transition: background var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out), padding var(--duration-base) var(--ease-out);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.header--solid {
+  /* Sem backdrop-filter aqui de propósito: um filtro em qualquer
+     ancestral de um elemento position:fixed vira o "containing block"
+     dele (em vez do viewport) — isso quebrava a altura do menu mobile,
+     que é position:fixed e fica dentro deste header. */
+  background: hsl(0 0% 100% / 0.97);
+  box-shadow: var(--shadow-sm);
+  padding-block: var(--space-3);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: var(--fs-md);
+  color: var(--text-heading);
+}
+
+.header:not(.header--solid) .header-logo,
+.header:not(.header--solid) .nav-link,
+.header:not(.header--solid) .btn-secondary {
+  color: var(--color-light);
+}
+
+.header:not(.header--solid) .btn-secondary {
+  border-color: hsl(0 0% 100% / 0.4);
+}
+
+.header-logo svg {
+  width: 28px;
+  height: 28px;
+  color: var(--color-primary);
+}
+
+.header:not(.header--solid) .header-logo svg {
+  color: var(--color-light);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.nav-list {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.nav-link {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-heading);
+  position: relative;
+  padding-block: var(--space-1);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0;
+  background: currentColor;
+  transition: width var(--duration-base) var(--ease-out);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.nav-toggle {
+  display: none;
+  padding: var(--space-2);
+  color: inherit;
+}
+
+.nav-toggle svg { width: 26px; height: 26px; }
+
+/* Menu mobile: painel deslizante */
+@media (max-width: 900px) {
+  /* Empilhamento do menu mobile: o botão hambúrguer precisa continuar
+     clicável (pra fechar) por cima do painel, que por sua vez fica por
+     cima do backdrop — senão o backdrop intercepta o toque e trava o menu
+     aberto. */
+  .nav-toggle {
+    display: inline-flex;
+    position: relative;
+    z-index: 3;
+  }
+
+  .nav {
+    position: fixed;
+    inset: 0 0 0 30%;
+    z-index: 2;
+    background: var(--surface-page);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: var(--space-8);
+    padding: calc(var(--space-10) + env(safe-area-inset-top)) var(--space-6) var(--space-6);
+    transform: translateX(100%);
+    transition: transform var(--duration-slow) var(--ease-out);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .nav[data-open="true"] {
+    transform: translateX(0);
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .nav .header-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .nav .header-actions .btn {
+    width: 100%;
+  }
+
+  .header:not(.header--solid) .nav .nav-link,
+  .header:not(.header--solid) .nav .btn-secondary {
+    color: var(--text-heading);
+  }
+
+  .header:not(.header--solid) .nav .btn-secondary {
+    border-color: var(--border-subtle);
+  }
+
+  .nav-link {
+    font-size: var(--fs-lg);
+  }
+
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background: hsl(222 40% 8% / 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-slow) var(--ease-out);
+  }
+
+  .nav-backdrop[data-open="true"] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Grids estruturais reutilizados pelas seções
+--------------------------------------------------------------------- */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-6 { grid-template-columns: repeat(6, 1fr); }
+
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-6 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .grid-2, .grid-3, .grid-4, .grid-6 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Rodapé
+--------------------------------------------------------------------- */
+.footer {
+  padding-block: var(--space-12) var(--space-6);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: var(--space-8);
+  padding-bottom: var(--space-10);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+.footer-brand p {
+  margin-top: var(--space-3);
+  max-width: 32ch;
+}
+
+.footer-heading {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: var(--space-4);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer-links a {
+  color: var(--text-body);
+  font-size: var(--fs-sm);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary-light);
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-3);
+}
+
+.footer-contact svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-primary-light);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-6);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+@media (max-width: 560px) {
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.social-links {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background: hsl(0 0% 100% / 0.06);
+  transition: background var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+}
+
+.social-links a:hover {
+  background: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.social-links svg {
+  width: 18px;
+  height: 18px;
+}

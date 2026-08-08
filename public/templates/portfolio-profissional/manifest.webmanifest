@@ -1,0 +1,14 @@
+{
+  "name": "Nome do Profissional — Portfólio",
+  "short_name": "Portfólio",
+  "description": "Portfólio profissional: projetos, serviços e resultados.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#faf9f7",
+  "theme_color": "#5b21ff",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
