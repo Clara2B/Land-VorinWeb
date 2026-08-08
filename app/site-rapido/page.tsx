@@ -246,7 +246,7 @@ export default function SiteRapidoPage() {
               Falar com a VorinWeb
             </TrackedLink>
           </div>
-          <p className="mt-2.5 text-[11px] text-slate-500 sm:text-xs">
+          <p className="mt-2.5 text-[11px] text-slate-400 sm:text-xs">
             Sem mensalidade obrigatória de desenvolvimento.
           </p>
 
@@ -364,7 +364,7 @@ export default function SiteRapidoPage() {
             </div>
           </div>
 
-          <p className="mx-auto mt-4 max-w-2xl text-center text-xs text-slate-500 sm:text-sm">
+          <p className="mx-auto mt-4 max-w-2xl text-center text-xs text-slate-400 sm:text-sm">
             O Site Rápido é uma alternativa indicada para pequenos negócios e profissionais que
             precisam começar de maneira mais acessível — sem substituir o valor de um projeto
             tradicional para quem precisa de algo totalmente sob medida.
@@ -426,7 +426,7 @@ export default function SiteRapidoPage() {
           <div className="mt-6">
             <ComparisonTable />
           </div>
-          <p className="mx-auto mt-3 max-w-3xl text-center text-[11px] text-slate-500 sm:text-xs">
+          <p className="mx-auto mt-3 max-w-3xl text-center text-[11px] text-slate-400 sm:text-xs">
             * Prazo contado a partir da confirmação do pagamento e do recebimento completo dos
             materiais — no Profissional, também após a definição do escopo no briefing.
           </p>
@@ -483,7 +483,7 @@ export default function SiteRapidoPage() {
               um único momento. Nela podem ser solicitadas correções de textos, imagens,
               informações e pequenos ajustes visuais dentro do escopo aprovado.
             </p>
-            <p className="mt-2 text-xs text-slate-500 sm:text-sm">
+            <p className="mt-2 text-xs text-slate-400 sm:text-sm">
               Novas listas enviadas após a conclusão das rodadas incluídas podem ser contratadas
               separadamente. Mudanças completas de estrutura ou novas funcionalidades não são
               consideradas pequenos ajustes.
@@ -595,7 +595,7 @@ export default function SiteRapidoPage() {
                 Falar com um especialista
               </TrackedLink>
             </div>
-            <p className="mt-3 text-[11px] text-slate-500 sm:text-xs">
+            <p className="mt-3 text-[11px] text-slate-400 sm:text-xs">
               Você receberá as informações completas antes de realizar qualquer pagamento.
             </p>
           </div>
@@ -611,7 +611,7 @@ export default function SiteRapidoPage() {
         aria-label="Falar no WhatsApp"
         event="click_whatsapp"
         eventPayload={{ button_location: "floating_button" }}
-        className="fixed bottom-20 right-3 z-30 flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105 md:bottom-3"
+        className="fixed bottom-20 right-3 z-30 flex h-12 w-12 items-center justify-center rounded-full bg-[#0F7A40] text-white shadow-lg transition-transform hover:scale-105 md:bottom-3"
       >
         <WhatsAppIcon className="h-6 w-6" />
       </TrackedLink>

@@ -9,9 +9,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-brand text-white hover:bg-brand/90",
-        outline: "border-2 border-brand text-brand hover:bg-brand/10",
-        ghost: "text-brand hover:bg-brand/10",
-        whatsapp: "bg-[#25D366] text-white hover:bg-[#25D366]/90",
+        // text-brand (#1E40FF) sobre os fundos escuros do site cai para ~2.75:1
+        // de contraste — abaixo do mínimo AA (4.5:1). text-brand-light já é a
+        // cor usada nos ícones/checks sobre fundo escuro em todo o site e
+        // passa em 4.9:1+, então reaproveitamos ela aqui em vez de criar um
+        // tom novo.
+        outline: "border-2 border-brand text-brand-light hover:bg-brand/10",
+        ghost: "text-brand-light hover:bg-brand/10",
+        // #25D366 (verde "oficial" do WhatsApp) com texto branco por cima dá
+        // só ~1.98:1 de contraste — bem abaixo do mínimo. Um verde um pouco
+        // mais escuro mantém a identidade visual do WhatsApp e passa em 5.4:1.
+        whatsapp: "bg-[#0F7A40] text-white hover:bg-[#0F7A40]/90",
       },
       size: {
         default: "h-11 px-6 text-sm",

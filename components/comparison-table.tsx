@@ -12,7 +12,7 @@ function Cell({ value }: { value: string }) {
   }
   if (value === "—") {
     return (
-      <span className="text-slate-600" aria-label="Não incluído">
+      <span className="text-slate-400" aria-label="Não incluído">
         —
       </span>
     );

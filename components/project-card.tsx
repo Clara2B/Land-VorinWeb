@@ -27,10 +27,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div>
         <p className="text-xs font-semibold text-slate-200">{project.name}</p>
-        <p className="text-[10px] text-slate-500">{project.segment}</p>
+        <p className="text-[10px] text-slate-400">{project.segment}</p>
       </div>
 
-      <p className="text-[10px] leading-snug text-slate-500">{project.description}</p>
+      <p className="text-[10px] leading-snug text-slate-400">{project.description}</p>
 
       <a
         href={project.url}

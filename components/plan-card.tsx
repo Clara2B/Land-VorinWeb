@@ -72,7 +72,7 @@ export function PlanCard({ plan, className }: PlanCardProps) {
 
         <div className="mt-auto pt-2">
           {plan.deadlineNote && (
-            <p className="mb-2 text-[10px] leading-snug text-slate-500">{plan.deadlineNote}</p>
+            <p className="mb-2 text-[10px] leading-snug text-slate-400">{plan.deadlineNote}</p>
           )}
 
           <TrackedLink

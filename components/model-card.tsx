@@ -29,7 +29,7 @@ export function ModelCard({ model }: ModelCardProps) {
             className="object-cover"
           />
         ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-1.5 bg-gradient-to-br from-slate-800 to-slate-900 text-slate-600">
+          <div className="flex h-full w-full flex-col items-center justify-center gap-1.5 bg-gradient-to-br from-slate-800 to-slate-900 text-slate-400">
             <LayoutIcon className="h-8 w-8" />
             <span className="text-[10px] font-medium uppercase tracking-wide">Prévia em breve</span>
           </div>
